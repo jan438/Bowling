@@ -115,6 +115,9 @@ var Deck = (function () {
 	if ((i >= 0) && (i < 10)) {
 		tempvar = i + 13;
 	}
+	if ((i >= 10) && (i < 20)) {
+		tempvar = i + 29;
+	}
 	var rank = tempvar % 13 + 1;
 	var suit = tempvar / 13 | 0;
 	var z = (52 - tempvar) / 4;
@@ -458,10 +461,10 @@ var Deck = (function () {
         var cards = _deck4.cards;
         var len = cards.length;
         __fontSize = fontSize();
-        cards.slice(-10).reverse().forEach(function (card, i) {
+        cards.slice(-20).reverse().forEach(function (card, i) {
           card.Bowling(i, len, function (i) {
             card.setSide('front');
-            if (i === 9) {
+            if (i === 19) {
               next();
             }
           });
@@ -617,7 +620,7 @@ var Deck = (function () {
     }
   }
   function Deck(jokers) {
-    var cards = new Array(jokers ? 55 : 10);
+    var cards = new Array(jokers ? 55 : 20);
     var $el = createElement('div');
     var self = observable({ mount: mount, unmount: unmount, cards: cards, $el: $el });
     var $root;
