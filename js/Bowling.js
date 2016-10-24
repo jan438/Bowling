@@ -111,15 +111,19 @@ var Deck = (function () {
   var maxZ = 52;
   function _card(i) {
 	var transform = prefix('transform');
-	var rank = i % 13 + 1;
-	var suit = i / 13 | 0;
-	var z = (52 - i) / 4;
+	var tempvar;
+	if ((i >= 0) && (i < 10)) {
+		tempvar = i + 13;
+	}
+	var rank = tempvar % 13 + 1;
+	var suit = tempvar / 13 | 0;
+	var z = (52 - tempvar) / 4;
 	var $el = createElement('div');
 	var $face = createElement('div');
 	var $back = createElement('div');
 	var isDraggable = false;
 	var isFlippable = false;
-	var self = { i: i, rank: rank, suit: suit, pos: i, $el: $el, mount: mount, unmount: unmount, setSide: setSide };
+	var self = { tempvar: tempvar, rank: rank, suit: suit, pos: tempvar, $el: $el, mount: mount, unmount: unmount, setSide: setSide };
 	var modules = Deck.modules;
 	var module;
 	$face.classList.add('face');
@@ -454,10 +458,10 @@ var Deck = (function () {
         var cards = _deck4.cards;
         var len = cards.length;
         __fontSize = fontSize();
-        cards.slice(-5).reverse().forEach(function (card, i) {
+        cards.slice(-10).reverse().forEach(function (card, i) {
           card.Bowling(i, len, function (i) {
             card.setSide('front');
-            if (i === 4) {
+            if (i === 9) {
               next();
             }
           });
@@ -613,7 +617,7 @@ var Deck = (function () {
     }
   }
   function Deck(jokers) {
-    var cards = new Array(jokers ? 55 : 52);
+    var cards = new Array(jokers ? 55 : 10);
     var $el = createElement('div');
     var self = observable({ mount: mount, unmount: unmount, cards: cards, $el: $el });
     var $root;
@@ -625,8 +629,10 @@ var Deck = (function () {
     }
     $el.classList.add('deck');
     var card;
+    var tempcard;
     for (var i = cards.length; i; i--) {
-      card = cards[i - 1] = _card(i - 1);
+      tempcard = _card(i - 1);
+      card = cards[i - 1] = tempcard;
       card.mount($el);
     }
     return self;
