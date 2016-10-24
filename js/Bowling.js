@@ -546,52 +546,6 @@ var Deck = (function () {
       };
     }
   };
-  var _fontSize;
-  var fan = {
-    deck: function deck(_deck6) {
-      _deck6.fan = _deck6.queued(fan);
-      function fan(next) {
-        var cards = _deck6.cards;
-        var len = cards.length;
-        _fontSize = fontSize();
-        cards.forEach(function (card, i) {
-          card.fan(i, len, function (i) {
-            if (i === cards.length - 1) {
-              next();
-            }
-          });
-        });
-      }
-    },
-    card: function card(_card6) {
-      var $el = _card6.$el;
-      _card6.fan = function (i, len, cb) {
-        var z = i / 4;
-        var delay = i * 10;
-        var rot = i / (len - 1) * 260 - 130;
-        _card6.animateTo({
-          delay: delay,
-          duration: 300,
-          x: -z,
-          y: -z,
-          rot: 0
-        });
-        _card6.animateTo({
-          delay: 300 + delay,
-          duration: 300,
-          x: Math.cos(deg2rad(rot - 90)) * 55 * _fontSize / 16,
-          y: Math.sin(deg2rad(rot - 90)) * 55 * _fontSize / 16,
-          rot: rot,
-          onStart: function onStart() {
-            $el.style.zIndex = i;
-          },
-          onComplete: function onComplete() {
-            cb(i);
-          }
-        });
-      };
-    }
-  };
   function deg2rad(degrees) {
     return degrees * Math.PI / 180;
   }
@@ -738,7 +692,7 @@ var Deck = (function () {
   }
   Deck.animationFrames = animationFrames;
   Deck.ease = ease;
-  Deck.modules = { bysuit: bysuit, fan: fan, intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort, flip: flip };
+  Deck.modules = { bysuit: bysuit, intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort, flip: flip };
   Deck.Card = _card;
   Deck.prefix = prefix;
   Deck.translate = translate;
