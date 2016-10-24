@@ -549,41 +549,6 @@ var Deck = (function () {
   function deg2rad(degrees) {
     return degrees * Math.PI / 180;
   }
-  var ___fontSize;
-  var bysuit = {
-    deck: function deck(_deck7) {
-      _deck7.bysuit = _deck7.queued(bysuit);
-      function bysuit(next) {
-        var cards = _deck7.cards;
-        ___fontSize = fontSize();
-        cards.forEach(function (card) {
-          card.bysuit(function (i) {
-            if (i === cards.length - 1) {
-              next();
-            }
-          });
-        });
-      }
-    },
-    card: function card(_card7) {
-      var rank = _card7.rank;
-      var suit = _card7.suit;
-      _card7.bysuit = function (cb) {
-        var i = _card7.i;
-        var delay = i * 10;
-        _card7.animateTo({
-          delay: delay,
-          duration: 400,
-          x: -Math.round((6.75 - rank) * 8 * ___fontSize / 16),
-          y: -Math.round((1.5 - suit) * 92 * ___fontSize / 16),
-          rot: 0,
-          onComplete: function onComplete() {
-            cb(i);
-          }
-        });
-      };
-    }
-  };
   function queue(target) {
     var array = Array.prototype;
     var queueing = [];
@@ -692,7 +657,7 @@ var Deck = (function () {
   }
   Deck.animationFrames = animationFrames;
   Deck.ease = ease;
-  Deck.modules = { bysuit: bysuit, intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort, flip: flip };
+  Deck.modules = { intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort, flip: flip };
   Deck.Card = _card;
   Deck.prefix = prefix;
   Deck.translate = translate;
