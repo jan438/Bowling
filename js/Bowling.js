@@ -332,20 +332,6 @@ var Deck = (function () {
       return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
     }
   };
-  var flip = {
-    deck: function deck(_deck) {
-      _deck.flip = _deck.queued(flip);
-      function flip(next, side) {
-        var flipped = _deck.cards.filter(function (card) {
-          return card.side === 'front';
-        }).length / _deck.cards.length;
-        _deck.cards.forEach(function (card, i) {
-          card.setSide(side ? side : flipped > 0.5 ? 'back' : 'front');
-        });
-        next();
-      }
-    }
-  };
   var sort = {
     deck: function deck(_deck2) {
       _deck2.sort = _deck2.queued(sort);
@@ -657,7 +643,7 @@ var Deck = (function () {
   }
   Deck.animationFrames = animationFrames;
   Deck.ease = ease;
-  Deck.modules = { intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort, flip: flip };
+  Deck.modules = { intro: intro, Bowling: Bowling, shuffle: shuffle, sort: sort };
   Deck.Card = _card;
   Deck.prefix = prefix;
   Deck.translate = translate;

@@ -6,12 +6,9 @@ var $topbar = document.getElementById('topbar')
 var $sort = document.createElement('button')
 var $shuffle = document.createElement('button')
 var $Bowling = document.createElement('button')
-var $flip = document.createElement('button')
 $shuffle.textContent = 'Shuffle'
 $sort.textContent = 'Sort'
 $Bowling.textContent = 'Bowling'
-$flip.textContent = 'Flip'
-$topbar.appendChild($flip)
 $topbar.appendChild($shuffle)
 $topbar.appendChild($Bowling)
 $topbar.appendChild($sort)
@@ -22,9 +19,6 @@ $shuffle.addEventListener('click', function () {
 })
 $sort.addEventListener('click', function () {
   deck.sort()
-})
-$flip.addEventListener('click', function () {
-  deck.flip()
 })
 $Bowling.addEventListener('click', function () {
   deck.queue(function (next) {
