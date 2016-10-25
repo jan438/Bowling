@@ -1,5 +1,20 @@
 'use strict';
 var Bowling = {};
+const pincards = 10;
+var cardposition = new Array(pincards);
+cardposition[0] = [-250, -250];
+cardposition[1] = [-150, -250];
+cardposition[2] = [-50, -250];
+cardposition[3] = [50, -250];
+cardposition[4] = [-200, -100];
+cardposition[5] = [-100, -100];
+cardposition[6] = [0, -100];
+cardposition[7] = [-150, 50];
+cardposition[8] = [-50, 50];
+cardposition[9] = [-100, 200];
+var cardxpos;
+var cardypos;
+var delay;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -510,12 +525,23 @@ var Deck = (function () {
     card: function card(_card4) {
       var $el = _card4.$el;
       _card4.Bowling = function (i, len, cb) {
-        var delay = i * 250;
+	if (i < pincards) {
+		_card4.setSide('front');
+		cardxpos = cardposition[i][0];
+		cardypos = cardposition[i][1];
+		delay = i * 250;
+	}
+	else {
+		_card4.setSide('back');
+		cardxpos = 200;
+		cardypos = 0;
+		delay = i * 250;
+	}
         _card4.animateTo({
           delay: delay,
           duration: 250,
-          x: Math.round((i - 2.05) * 70 * __fontSize / 16),
-          y: Math.round(-110 * __fontSize / 16),
+          x: cardxpos,
+          y: cardypos,
           rot: 0,
           onStart: function onStart() {
             $el.style.zIndex = len - 1 + i;
