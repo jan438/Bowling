@@ -1,20 +1,23 @@
 'use strict';
 var Bowling = {};
 const pincards = 10;
-var cardposition = new Array(pincards);
-cardposition[0] = [-250, -250];
-cardposition[1] = [-150, -250];
-cardposition[2] = [-50, -250];
-cardposition[3] = [50, -250];
-cardposition[4] = [-200, -100];
-cardposition[5] = [-100, -100];
-cardposition[6] = [0, -100];
-cardposition[7] = [-150, 50];
-cardposition[8] = [-50, 50];
-cardposition[9] = [-100, 200];
+var pinposition = new Array(pincards);
+pinposition[0] = [-250, -250];
+pinposition[1] = [-150, -250];
+pinposition[2] = [-50, -250];
+pinposition[3] = [50, -250];
+pinposition[4] = [-200, -100];
+pinposition[5] = [-100, -100];
+pinposition[6] = [0, -100];
+pinposition[7] = [-150, 50];
+pinposition[8] = [-50, 50];
+pinposition[9] = [-100, 200];
 var cardxpos;
 var cardypos;
 var delay;
+var pileone;
+var piletwo;
+var pilethree;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -509,17 +512,20 @@ var Deck = (function () {
     deck: function deck(_deck4) {
       _deck4.Bowling = _deck4.queued(Bowling);
       function Bowling(next) {
-        var cards = _deck4.cards;
-        var len = cards.length;
-        __fontSize = fontSize();
-        cards.slice(-20).reverse().forEach(function (card, i) {
-          card.Bowling(i, len, function (i) {
-		card.setSide('front');
-		if (i === 19) {
-			next();
-		}
-          });
-        });
+		pileone = [];
+		piletwo = [];
+		pilethree = [];
+		var cards = _deck4.cards;
+		var len = cards.length;
+		__fontSize = fontSize();
+		cards.slice(-20).reverse().forEach(function (card, i) {
+			card.Bowling(i, len, function (i) {
+				card.setSide('front');
+				if (i === 19) {
+					next();
+				}
+			});
+		});
       }
     },
     card: function card(_card4) {
@@ -527,8 +533,8 @@ var Deck = (function () {
       _card4.Bowling = function (i, len, cb) {
 	if (i < pincards) {
 		_card4.setSide('front');
-		cardxpos = cardposition[i][0];
-		cardypos = cardposition[i][1];
+		cardxpos = pinposition[i][0];
+		cardypos = pinposition[i][1];
 		delay = i * 250;
 	}
 	else {
