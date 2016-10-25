@@ -1,4 +1,40 @@
 'use strict';
+var Bowling = {};
+function cardtosymbols(card) {
+	var symbols = "";
+	var symbol1 = "";
+	var symbol2 = "";
+	switch (card.suit) {
+		case 1: symbol1 = "♥";
+			break;
+		case 3: symbol1 = "♦";
+			break;
+	}
+	switch (card.rank) {
+		case 10:symbol2 = "0";
+			break;
+		case 9: symbol2 = "9";
+			break;
+		case 8: symbol2 = "8";
+			break;
+		case 7: symbol2 = "7";
+			break;
+		case 6: symbol2 = "6";
+			break;
+		case 5: symbol2 = "5";
+			break;
+		case 4: symbol2 = "4";
+			break;
+		case 3: symbol2 = "3";
+			break;
+		case 2: symbol2 = "2";
+			break;
+		case 1: symbol2 = "A";
+			break;
+	}
+	symbols = symbol1 + symbol2;
+	return symbols;
+}
 var Deck = (function () {
   'use strict';
   var ticking;
@@ -463,10 +499,10 @@ var Deck = (function () {
         __fontSize = fontSize();
         cards.slice(-20).reverse().forEach(function (card, i) {
           card.Bowling(i, len, function (i) {
-            card.setSide('front');
-            if (i === 19) {
-              next();
-            }
+		card.setSide('front');
+		if (i === 19) {
+			next();
+		}
           });
         });
       }
