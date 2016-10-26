@@ -273,6 +273,7 @@ var Deck = (function () {
 		module.card && module.card(self);
 	}
 	function onMousedown(e) {
+		console.log(cardtosymbols(self));
 		var startPos = {};
 		var pos = {};
 		var starttime = Date.now();
