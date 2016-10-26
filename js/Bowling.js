@@ -23,8 +23,14 @@ var delay;
 var pileone;
 var piletwo;
 var pilethree;
-var deltaxpos = 5;
-var deltaypos = 15;
+const deltaxpos = 5;
+const deltaypos = 15;
+const minpileone = 145;
+const maxpileone = 180;
+const minpiletwo = 245;
+const maxpiletwo = 280;
+const minpilethree = 345;
+const maxpilethree = 380;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -273,7 +279,15 @@ var Deck = (function () {
 		module.card && module.card(self);
 	}
 	function onMousedown(e) {
-		console.log(cardtosymbols(self));
+		if (self.x >= minpileone && self.x <= maxpileone) {
+			console.log("1: " + cardtosymbols(self));
+		}
+		if (self.x >= minpiletwo && self.x <= maxpiletwo) {
+			console.log("2: " + cardtosymbols(self));
+		}
+		if (self.x >= minpilethree && self.x <= maxpilethree) {
+			console.log("3: " + cardtosymbols(self));
+		}
 		var startPos = {};
 		var pos = {};
 		var starttime = Date.now();
