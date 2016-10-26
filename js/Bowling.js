@@ -1,6 +1,7 @@
 'use strict';
 var Bowling = {};
 const pincards = 10;
+const pilecards = 3;
 var pinposition = new Array(pincards);
 pinposition[0] = [-250, -250];
 pinposition[1] = [-150, -250];
@@ -12,16 +13,18 @@ pinposition[6] = [0, -100];
 pinposition[7] = [-150, 50];
 pinposition[8] = [-50, 50];
 pinposition[9] = [-100, 200];
-var pileposition = new Array(3);
-pileposition[0] = [180, 0];
-pileposition[1] = [270, 0];
-pileposition[2] = [360, 0];
+var pileposition = new Array(pilecards);
+pileposition[0] = [150, -50];
+pileposition[1] = [250, -50];
+pileposition[2] = [350, -50];
 var cardxpos;
 var cardypos;
 var delay;
 var pileone;
 var piletwo;
 var pilethree;
+var deltaxpos = 5;
+var deltaypos = 15;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -564,18 +567,18 @@ var Deck = (function () {
 		}
 		else {
 			if (i < 15) {
-				cardxpos = pileposition[0][0];
-				cardypos = pileposition[0][1];
+				cardxpos = pileposition[0][0] + (i - 10) * deltaxpos;
+				cardypos = pileposition[0][1] + (i - 10) * deltaypos;
 			}
 			else {
 				if (i < 18) {
-					cardxpos = pileposition[1][0];
-					cardypos = pileposition[1][1];
+					cardxpos = pileposition[1][0] + (i - 15) * deltaxpos;
+					cardypos = pileposition[1][1] + (i - 15) * deltaypos;
 				}
 				else {
 					if (i < 20) {
-						cardxpos = pileposition[2][0];
-						cardypos = pileposition[2][1];
+						cardxpos = pileposition[2][0] + (i - 18) * deltaxpos;
+						cardypos = pileposition[2][1] + (i - 18) * deltaypos;
 					}
 				}
 			}
