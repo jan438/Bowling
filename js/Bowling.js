@@ -559,30 +559,23 @@ var Deck = (function () {
 	var $el = _card4.$el;
 	_card4.Bowling = function (i, len, cb) {
 		if (i < pincards) {
-			_card4.setSide('front');
 			cardxpos = pinposition[i][0];
 			cardypos = pinposition[i][1];
 		}
 		else {
 			if (i < 15) {
-				_card4.setSide('back');
 				cardxpos = pileposition[0][0];
 				cardypos = pileposition[0][1];
-				if (i === 14) _card4.setSide('front');
 			}
 			else {
 				if (i < 18) {
-					_card4.setSide('back');
 					cardxpos = pileposition[1][0];
 					cardypos = pileposition[1][1];
-					if (i === 17) _card4.setSide('front');
 				}
 				else {
 					if (i < 20) {
-						_card4.setSide('back');
 						cardxpos = pileposition[2][0];
 						cardypos = pileposition[2][1];
-						if (i === 19) _card4.setSide('front');
 					}
 				}
 			}
