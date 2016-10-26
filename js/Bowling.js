@@ -12,6 +12,10 @@ pinposition[6] = [0, -100];
 pinposition[7] = [-150, 50];
 pinposition[8] = [-50, 50];
 pinposition[9] = [-100, 200];
+var pileposition = new Array(3);
+pileposition[0] = [180, 0];
+pileposition[1] = [270, 0];
+pileposition[2] = [360, 0];
 var cardxpos;
 var cardypos;
 var delay;
@@ -552,34 +556,52 @@ var Deck = (function () {
       }
     },
     card: function card(_card4) {
-      var $el = _card4.$el;
-      _card4.Bowling = function (i, len, cb) {
-	if (i < pincards) {
-		_card4.setSide('front');
-		cardxpos = pinposition[i][0];
-		cardypos = pinposition[i][1];
+	var $el = _card4.$el;
+	_card4.Bowling = function (i, len, cb) {
+		if (i < pincards) {
+			_card4.setSide('front');
+			cardxpos = pinposition[i][0];
+			cardypos = pinposition[i][1];
+		}
+		else {
+			if (i < 15) {
+				_card4.setSide('back');
+				cardxpos = pileposition[0][0];
+				cardypos = pileposition[0][1];
+				if (i === 14) _card4.setSide('front');
+			}
+			else {
+				if (i < 18) {
+					_card4.setSide('back');
+					cardxpos = pileposition[1][0];
+					cardypos = pileposition[1][1];
+					if (i === 17) _card4.setSide('front');
+				}
+				else {
+					if (i < 20) {
+						_card4.setSide('back');
+						cardxpos = pileposition[2][0];
+						cardypos = pileposition[2][1];
+						if (i === 19) _card4.setSide('front');
+					}
+				}
+			}
+		}
 		delay = i * 250;
-	}
-	else {
-		_card4.setSide('back');
-		cardxpos = 200;
-		cardypos = 0;
-		delay = i * 250;
-	}
-        _card4.animateTo({
-          delay: delay,
-          duration: 250,
-          x: cardxpos,
-          y: cardypos,
-          rot: 0,
-          onStart: function onStart() {
-            $el.style.zIndex = len - 1 + i;
-          },
-          onComplete: function onComplete() {
-            cb(i);
-          }
-        });
-      };
+		_card4.animateTo({
+			delay: delay,
+			duration: 250,
+			x: cardxpos,
+			y: cardypos,
+			rot: 0,
+			onStart: function onStart() {
+				$el.style.zIndex = len - 1 + i;
+			},
+			onComplete: function onComplete() {
+				cb(i);
+			}
+		});
+	};
     }
   };
   var intro = {
