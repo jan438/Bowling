@@ -520,7 +520,30 @@ var Deck = (function () {
 		__fontSize = fontSize();
 		cards.slice(-20).reverse().forEach(function (card, i) {
 			card.Bowling(i, len, function (i) {
-				card.setSide('front');
+				if (i < pincards) {
+					card.setSide('front');
+				}
+				else {
+					if (i < 15) {
+						card.setSide('back');
+						pileone.push(card);
+						if (i === 14) card.setSide('front');
+					}
+					else {
+						if (i < 18) {
+							card.setSide('back');
+							piletwo.push(card);
+							if (i === 17) card.setSide('front');
+						}
+						else {
+							if (i < 20) {
+								card.setSide('back');
+								pilethree.push(card);
+								if (i === 19) card.setSide('front');
+							}
+						}
+					}
+				}
 				if (i === 19) {
 					next();
 				}
