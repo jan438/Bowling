@@ -391,7 +391,11 @@ table {
 	width: 100%;
 	table-layout: fixed;
 }
-table, th, td {
+table, th {
+	border: 1px solid black;
+	width: 40px;
+}
+table, td {
 	border: 1px solid black;
 	width: 20px;
 }
