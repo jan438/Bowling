@@ -391,7 +391,7 @@ table {
 	width: 100%;
 	table-layout: fixed;
 }
-table, th {
+table, th.turn {
 	border: 1px solid black;
 	width: 60px;
 }
