@@ -394,10 +394,12 @@ table {
 table, th.turn {
 	border: 1px solid black;
 	width: 60px;
+	background-color: white;
 }
 table, td {
 	border: 1px solid black;
 	width: 30px;
+	background-color: white;
 }
 table#bowlingscoring {
 	margin-top:10px;
