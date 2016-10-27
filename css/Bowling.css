@@ -393,11 +393,11 @@ table {
 }
 table, th {
 	border: 1px solid black;
-	width: 40px;
+	width: 60px;
 }
 table, td {
 	border: 1px solid black;
-	width: 20px;
+	width: 30px;
 }
 table#bowlingscoring {
 	margin-top:10px;
@@ -406,5 +406,5 @@ table#bowlingscoring {
 	margin-right:10px;
 	position:absolute;
 	top:275px;
-	left:-250px;
+	left:-350px;
 }
