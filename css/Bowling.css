@@ -387,3 +387,20 @@ body {
     font-size: 125%;
   }
 }
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+table, th, td {
+	border: 1px solid black;
+	width: 20px;
+}
+table#bowlingscoring {
+	margin-top:10px;
+	margin-left:10px;
+	margin-bottom:10px;
+	margin-right:10px;
+	position:absolute;
+	top:275px;
+	left:-250px;
+}
