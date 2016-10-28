@@ -193,6 +193,7 @@ var Deck = (function () {
 	var suit = tempvar / 13 | 0;
 	var z = (52 - tempvar) / 4;
 	var $el = createElement('div');
+	$el.id = 'card' + i;
 	var $face = createElement('div');
 	var $back = createElement('div');
 	var isDraggable = false;
@@ -286,12 +287,16 @@ var Deck = (function () {
 		startTime = new Date().getTime();
 		if (self.x >= minpileone && self.x <= maxpileone) {
 			console.log("1: " + cardtosymbols(self));
+			$("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
 		}
 		if (self.x >= minpiletwo && self.x <= maxpiletwo) {
 			console.log("2: " + cardtosymbols(self));
+			$("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
+
 		}
 		if (self.x >= minpilethree && self.x <= maxpilethree) {
 			console.log("3: " + cardtosymbols(self));
+			$("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
 		}
 		var startPos = {};
 		var pos = {};
