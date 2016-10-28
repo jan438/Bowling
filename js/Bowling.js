@@ -35,6 +35,8 @@ var longpress = false;
 var presstime = 1000;
 var shortpress = false;
 var startTime, endTime;
+var countballselected;
+var countpinselected;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -285,6 +287,12 @@ var Deck = (function () {
 	}
 	function onMousedown(e) {
 		startTime = new Date().getTime();
+		countpinselected = 0;
+		countballselected = 0;
+		for (var i = 0; i < 52; i++) {
+			if ($("#card" + i).hasClass('pinselected')) countpinselected = countpinselected + 1;
+			if ($("#card" + i).hasClass('ballselected')) countballselected = countballselected + 1;
+		}
 		if (self.x >= minpileone && self.x <= maxpileone) {
 			console.log("1: " + cardtosymbols(self));
 			$("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
