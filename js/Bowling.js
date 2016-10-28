@@ -311,7 +311,8 @@ var Deck = (function () {
 		for (var i = 0; i < pincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
 				console.log("Pin: " + i + " selected");
-				$("#" + $el.id).addClass('pinselected');
+				if ($("#" + $el.id).hasClass('pinselected')) $("#" + $el.id).removeClass('pinselected');
+				else if (countpinselected < 3) $("#" + $el.id).addClass('pinselected');
 			}
 		}
 		var startPos = {};
