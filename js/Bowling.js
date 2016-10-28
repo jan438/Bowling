@@ -298,6 +298,12 @@ var Deck = (function () {
 			console.log("3: " + cardtosymbols(self));
 			$("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
 		}
+		for (var i = 0; i < pincards; i++) {
+			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
+				console.log("Pin: " + i + " selected");
+				$("#" + $el.id).addClass('pinselected');
+			}
+		}
 		var startPos = {};
 		var pos = {};
 		e.preventDefault();
