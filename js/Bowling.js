@@ -295,16 +295,18 @@ var Deck = (function () {
 		}
 		if (self.x >= minpileone && self.x <= maxpileone) {
 			console.log("1: " + cardtosymbols(self));
-			$("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
+			if ($("#" + pileone[pileone.length - 1].$el.id).hasClass('ballselected')) $("#" + pileone[pileone.length - 1].$el.id).removeClass('ballselected');
+			else if (countballselected === 0) $("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
 		}
 		if (self.x >= minpiletwo && self.x <= maxpiletwo) {
 			console.log("2: " + cardtosymbols(self));
-			$("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
-
+			if ($("#" + piletwo[piletwo.length - 1].$el.id).hasClass('ballselected')) $("#" + piletwo[piletwo.length - 1].$el.id).removeClass('ballselected');
+			else if (countballselected === 0) $("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
 		}
 		if (self.x >= minpilethree && self.x <= maxpilethree) {
 			console.log("3: " + cardtosymbols(self));
-			$("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
+			if ($("#" + pilethree[pilethree.length - 1].$el.id).hasClass('ballselected')) $("#" + pilethree[pilethree.length - 1].$el.id).removeClass('ballselected');
+			else if (countballselected === 0) $("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
 		}
 		for (var i = 0; i < pincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
