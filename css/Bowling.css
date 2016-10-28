@@ -410,3 +410,9 @@ table#bowlingscoring {
 	top:275px;
 	left:-350px;
 }
+.ballselected {
+  border: 3px solid #339933;
+}
+.pinselected {
+  border: 3px solid #9966ff;
+}
