@@ -31,6 +31,10 @@ const minpiletwo = 245;
 const maxpiletwo = 280;
 const minpilethree = 345;
 const maxpilethree = 380;
+var longpress = false;
+var presstime = 1000;
+var shortpress = false;
+var startTime, endTime;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -279,6 +283,7 @@ var Deck = (function () {
 		module.card && module.card(self);
 	}
 	function onMousedown(e) {
+		startTime = new Date().getTime();
 		if (self.x >= minpileone && self.x <= maxpileone) {
 			console.log("1: " + cardtosymbols(self));
 		}
@@ -290,7 +295,6 @@ var Deck = (function () {
 		}
 		var startPos = {};
 		var pos = {};
-		var starttime = Date.now();
 		e.preventDefault();
 		if (e.type === 'mousedown') {
 			startPos.x = pos.x = e.clientX;
@@ -322,8 +326,15 @@ var Deck = (function () {
 			$el.style[transform] = translate(Math.round(self.x + pos.x - startPos.x) + 'px', Math.round(self.y + pos.y - startPos.y) + 'px') + (self.rot ? ' rotate(' + self.rot + 'deg)' : '');
 		}
 		function onMouseup(e) {
-			if (isFlippable && Date.now() - starttime < 200) {
-				self.setSide(self.side === 'front' ? 'back' : 'front');
+			endTime = new Date().getTime();
+			if (endTime - startTime < presstime) {
+				shortpress = true;
+				longpress = false;
+			}
+			else
+			if (endTime - startTime >= presstime) {
+				longpress = true;
+				shortpress = false;
 			}
 			if (e.type === 'mouseup') {
 				removeListener(window, 'mousemove', onMousemove);
