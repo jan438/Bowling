@@ -77,9 +77,13 @@ function cardtosymbols(card) {
 function validate(pincards, ballcard) {
 	for (var i = 0; i < pincards.length; i++) {
 		console.log("Validate pins " + pincards[i].rank);
+		$("#" + pincards[i].$el.id).removeClass('pinselected');
+		$("#" + pincards[i].$el.id).hide();
 	}
 	if (ballcard != null) {
 		console.log("Validate ball " + ballcard.rank);
+		$("#" + ballcard.$el.id).removeClass('ballselected');
+		$("#" + ballcard.$el.id).hide();
 	}
 }
 var Deck = (function () {
@@ -672,6 +676,7 @@ var Deck = (function () {
     card: function card(_card4) {
 	var $el = _card4.$el;
 	_card4.Bowling = function (i, len, cb) {
+		$("#" + _card4.$el.id).show();
 		if (i < pincards) {
 			cardxpos = pinposition[i][0];
 			cardypos = pinposition[i][1];
