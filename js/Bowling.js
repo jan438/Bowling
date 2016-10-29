@@ -72,6 +72,9 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
+function validate() {
+	console.log("Validate");
+}
 var Deck = (function () {
   'use strict';
   var ticking;
@@ -357,6 +360,9 @@ var Deck = (function () {
 			if (endTime - startTime >= presstime) {
 				longpress = true;
 				shortpress = false;
+			}
+			if (longpress) {
+				validate();
 			}
 			if (e.type === 'mouseup') {
 				removeListener(window, 'mousemove', onMousemove);
