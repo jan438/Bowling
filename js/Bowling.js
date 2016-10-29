@@ -37,6 +37,7 @@ var shortpress = false;
 var startTime, endTime;
 var countballselected;
 var countpinselected;
+var pinstocheck;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -72,8 +73,10 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
-function validate() {
-	console.log("Validate");
+function validate(pincards) {
+	for (var i = 0; i < pincards.length; i++) {
+		console.log("Validate " + pincards[i].rank);
+	}
 }
 var Deck = (function () {
   'use strict';
@@ -314,8 +317,15 @@ var Deck = (function () {
 		for (var i = 0; i < pincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
 				console.log("Pin: " + i + " selected");
-				if ($("#" + $el.id).hasClass('pinselected')) $("#" + $el.id).removeClass('pinselected');
-				else if (countpinselected < 3) $("#" + $el.id).addClass('pinselected');
+				if ($("#" + $el.id).hasClass('pinselected')) {
+					$("#" + $el.id).removeClass('pinselected');
+					var index = pinstocheck.indexOf(self);
+					pinstocheck.splice(index, 1);
+				}
+				else if (countpinselected < 3) {
+					$("#" + $el.id).addClass('pinselected');
+					pinstocheck.push(self);
+				}
 			}
 		}
 		var startPos = {};
@@ -362,7 +372,7 @@ var Deck = (function () {
 				shortpress = false;
 			}
 			if (longpress) {
-				validate();
+				validate(pinstocheck);
 			}
 			if (e.type === 'mouseup') {
 				removeListener(window, 'mousemove', onMousemove);
@@ -576,6 +586,7 @@ var Deck = (function () {
 		pileone = [];
 		piletwo = [];
 		pilethree = [];
+		pinstocheck = [];
 		$("#td01").html(0);
 		$("#td02").html(0);
 		$("#td03").html(0);
