@@ -38,6 +38,7 @@ var startTime, endTime;
 var countballselected;
 var countpinselected;
 var pinstocheck;
+var balltocheck;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -73,9 +74,12 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
-function validate(pincards) {
+function validate(pincards, ballcard) {
 	for (var i = 0; i < pincards.length; i++) {
-		console.log("Validate " + pincards[i].rank);
+		console.log("Validate pins " + pincards[i].rank);
+	}
+	if (ballcard != null) {
+		console.log("Validate ball " + ballcard.rank);
 	}
 }
 var Deck = (function () {
@@ -302,17 +306,26 @@ var Deck = (function () {
 		if (self.x >= minpileone && self.x <= maxpileone) {
 			console.log("1: " + cardtosymbols(self));
 			if ($("#" + pileone[pileone.length - 1].$el.id).hasClass('ballselected')) $("#" + pileone[pileone.length - 1].$el.id).removeClass('ballselected');
-			else if (countballselected === 0) $("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
+			else if (countballselected === 0) {
+				$("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
+				balltocheck = self;
+			}
 		}
 		if (self.x >= minpiletwo && self.x <= maxpiletwo) {
 			console.log("2: " + cardtosymbols(self));
 			if ($("#" + piletwo[piletwo.length - 1].$el.id).hasClass('ballselected')) $("#" + piletwo[piletwo.length - 1].$el.id).removeClass('ballselected');
-			else if (countballselected === 0) $("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
+			else if (countballselected === 0) {
+				$("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
+				balltocheck = self;
+			}
 		}
 		if (self.x >= minpilethree && self.x <= maxpilethree) {
 			console.log("3: " + cardtosymbols(self));
 			if ($("#" + pilethree[pilethree.length - 1].$el.id).hasClass('ballselected')) $("#" + pilethree[pilethree.length - 1].$el.id).removeClass('ballselected');
-			else if (countballselected === 0) $("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
+			else if (countballselected === 0) {
+				$("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
+				balltocheck = self;
+			}
 		}
 		for (var i = 0; i < pincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
@@ -372,7 +385,7 @@ var Deck = (function () {
 				shortpress = false;
 			}
 			if (longpress) {
-				validate(pinstocheck);
+				validate(pinstocheck, balltocheck);
 			}
 			if (e.type === 'mouseup') {
 				removeListener(window, 'mousemove', onMousemove);
@@ -587,6 +600,7 @@ var Deck = (function () {
 		piletwo = [];
 		pilethree = [];
 		pinstocheck = [];
+		balltocheck = null;
 		$("#td01").html(0);
 		$("#td02").html(0);
 		$("#td03").html(0);
