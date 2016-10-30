@@ -75,16 +75,26 @@ function cardtosymbols(card) {
 	return symbols;
 }
 function validate(pincards, ballcard) {
+	var sum = 0;
+	var valid = false;
 	for (var i = 0; i < pincards.length; i++) {
 		console.log("Validate pins " + pincards[i].rank);
-		$("#" + pincards[i].$el.id).removeClass('pinselected');
-		$("#" + pincards[i].$el.id).hide();
+		if (pincards[i].rank !== 10) sum = sum + pincards[i].rank;
 	}
 	if (ballcard != null) {
 		console.log("Validate ball " + ballcard.rank);
+		if (sum > 9) sum = sum % 10;
+		valid = (sum === ballcard.rank);
+	}
+	if (valid) {
+		for (var i = 0; i < pincards.length; i++) {
+			$("#" + pincards[i].$el.id).removeClass('pinselected');
+			$("#" + pincards[i].$el.id).hide();
+		}
 		$("#" + ballcard.$el.id).removeClass('ballselected');
 		$("#" + ballcard.$el.id).hide();
 	}
+	return valid;
 }
 var Deck = (function () {
   'use strict';
@@ -389,7 +399,21 @@ var Deck = (function () {
 				shortpress = false;
 			}
 			if (longpress) {
-				validate(pinstocheck, balltocheck);
+				var valid = validate(pinstocheck, balltocheck);
+				if (valid) {
+					if (self.x >= minpileone && self.x <= maxpileone) {
+						pileone.splice(-1,1);
+						if (pileone.length > 0) pileone[pileone.length -1].setSide('front');
+					}
+					if (self.x >= minpiletwo && self.x <= maxpiletwo) {
+						piletwo.splice(-1,1);
+						if (piletwo.length > 0) piletwo[piletwo.length -1].setSide('front');
+					}
+					if (self.x >= minpilethree && self.x <= maxpilethree) {
+						pilethree.splice(-1,1);
+						if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
+					}
+				}
 			}
 			if (e.type === 'mouseup') {
 				removeListener(window, 'mousemove', onMousemove);
