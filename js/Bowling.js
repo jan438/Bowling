@@ -84,7 +84,7 @@ function validate(pincards, ballcard) {
 	if (ballcard != null) {
 		console.log("Validate ball " + ballcard.rank);
 		if (sum > 9) sum = sum % 10;
-		valid = (sum === ballcard.rank);
+		valid = (sum === (ballcard.rank % 10));
 	}
 	if (valid) {
 		for (var i = 0; i < pincards.length; i++) {
