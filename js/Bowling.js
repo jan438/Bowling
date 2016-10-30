@@ -413,6 +413,7 @@ var Deck = (function () {
 						pilethree.splice(-1,1);
 						if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 					}
+					pinstocheck = [];
 				}
 			}
 			if (e.type === 'mouseup') {
