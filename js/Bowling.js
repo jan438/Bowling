@@ -1,8 +1,8 @@
 'use strict';
 var Bowling = {};
-const pincards = 10;
+const countpincards = 10;
 const pilecards = 3;
-var pinposition = new Array(pincards);
+var pinposition = new Array(countpincards);
 pinposition[0] = [-250, -250];
 pinposition[1] = [-150, -250];
 pinposition[2] = [-50, -250];
@@ -39,6 +39,16 @@ var countballselected;
 var countpinselected;
 var pinstocheck;
 var balltocheck;
+var pin0;
+var pin1;
+var pin2;
+var pin3;
+var pin4;
+var pin5;
+var pin6;
+var pin7;
+var pin8;
+var pin9;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -76,7 +86,30 @@ function cardtosymbols(card) {
 }
 function possibilitycheck() {
 	var result = false;
-	console.log("Possibilitycheck ");
+	for (var i = 0; i < countpincards; i++) {
+		switch (i) {
+			case 0: console.log("Possibilitycheck0 " + pin0.rank + " " + $("#" + pin0.$el.id).is(":hidden"));
+				break;
+			case 1: console.log("Possibilitycheck1 " + pin1.rank + " " + $("#" + pin1.$el.id).is(":hidden"));
+				break;
+			case 2: console.log("Possibilitycheck2 " + pin2.rank + " " + $("#" + pin2.$el.id).is(":hidden"));
+				break;
+			case 3: console.log("Possibilitycheck3 " + pin3.rank + " " + $("#" + pin3.$el.id).is(":hidden"));
+				break;
+			case 4: console.log("Possibilitycheck4 " + pin4.rank + " " + $("#" + pin4.$el.id).is(":hidden"));
+				break;
+			case 5: console.log("Possibilitycheck5 " + pin5.rank + " " + $("#" + pin5.$el.id).is(":hidden"));
+				break;
+			case 6: console.log("Possibilitycheck6 " + pin6.rank + " " + $("#" + pin6.$el.id).is(":hidden"));
+				break;
+			case 7: console.log("Possibilitycheck7 " + pin7.rank + " " + $("#" + pin7.$el.id).is(":hidden"));
+				break;
+			case 8: console.log("Possibilitycheck8 " + pin8.rank + " " + $("#" + pin8.$el.id).is(":hidden"));
+				break;
+			case 9: console.log("Possibilitycheck9 " + pin9.rank + " " + $("#" + pin9.$el.id).is(":hidden"));
+				break;
+		}
+	}
 	return result;
 }
 function validate(pincards, ballcard) {
@@ -346,7 +379,7 @@ var Deck = (function () {
 				balltocheck = self;
 			}
 		}
-		for (var i = 0; i < pincards; i++) {
+		for (var i = 0; i < countpincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
 				console.log("Pin: " + i + " selected");
 				if ($("#" + $el.id).hasClass('pinselected')) {
@@ -675,8 +708,30 @@ var Deck = (function () {
 		__fontSize = fontSize();
 		cards.slice(-20).reverse().forEach(function (card, i) {
 			card.Bowling(i, len, function (i) {
-				if (i < pincards) {
+				if (i < countpincards) {
 					card.setSide('front');
+					switch (i) {
+						case 0: pin0 = card;
+							break;
+						case 1: pin1 = card;
+							break;
+						case 2: pin2 = card;
+							break;
+						case 3: pin3 = card;
+							break;
+						case 4: pin4 = card;
+							break;
+						case 5: pin5 = card;
+							break;
+						case 6: pin6 = card;
+							break;
+						case 7: pin7 = card;
+							break;
+						case 8: pin8 = card;
+							break;
+						case 9: pin9 = card;
+							break;
+					}
 				}
 				else {
 					if (i < 15) {
@@ -710,7 +765,7 @@ var Deck = (function () {
 	var $el = _card4.$el;
 	_card4.Bowling = function (i, len, cb) {
 		$("#" + _card4.$el.id).show();
-		if (i < pincards) {
+		if (i < countpincards) {
 			cardxpos = pinposition[i][0];
 			cardypos = pinposition[i][1];
 		}
