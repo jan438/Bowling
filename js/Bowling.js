@@ -74,6 +74,11 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
+function possibilitycheck() {
+	var result = false;
+	console.log("Possibilitycheck ");
+	return result;
+}
 function validate(pincards, ballcard) {
 	var sum = 0;
 	var valid = false;
@@ -414,6 +419,9 @@ var Deck = (function () {
 						if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 					}
 					pinstocheck = [];
+				}
+				else {
+					var result = possibilitycheck();
 				}
 			}
 			if (e.type === 'mouseup') {
