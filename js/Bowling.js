@@ -87,40 +87,49 @@ function cardtosymbols(card) {
 function possibilitycheck() {
 	var result = false;
 	var visible;
+	var pincards = [];
+	var ballcard = null;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
 			case 0: visible = $("#" + pin0.$el.id).is(":visible");
-				console.log("Possibilitycheck0 " + pin0.rank + " " + visible);
+				if (visible) pincards.push(pin0);
 				break;
 			case 1: visible = $("#" + pin1.$el.id).is(":visible");
-				console.log("Possibilitycheck1 " + pin1.rank + " " + visible);
+				if (visible) pincards.push(pin1);
 				break;
 			case 2: visible = $("#" + pin2.$el.id).is(":visible");
-				console.log("Possibilitycheck2 " + pin2.rank + " " + visible);
+				if (visible) pincards.push(pin2);
 				break;
 			case 3: visible = $("#" + pin3.$el.id).is(":visible");
-				console.log("Possibilitycheck3 " + pin3.rank + " " + visible);
+				if (visible) pincards.push(pin3);
 				break;
 			case 4: visible = $("#" + pin4.$el.id).is(":visible");
-				console.log("Possibilitycheck4 " + pin4.rank + " " + visible);
+				if (visible) pincards.push(pin4);
 				break;
 			case 5: visible = $("#" + pin5.$el.id).is(":visible");
-				console.log("Possibilitycheck5 " + pin5.rank + " " + visible);
+				if (visible) pincards.push(pin5);
 				break;
 			case 6: visible = $("#" + pin6.$el.id).is(":visible");
-				console.log("Possibilitycheck6 " + pin6.rank + " " + visible);
+				if (visible) pincards.push(pin6);
 				break;
 			case 7: visible = $("#" + pin7.$el.id).is(":visible");
-				console.log("Possibilitycheck7 " + pin7.rank + " " + visible);
+				if (visible) pincards.push(pin7);
 				break;
 			case 8: visible = $("#" + pin8.$el.id).is(":visible");
-				console.log("Possibilitycheck8 " + pin8.rank + " " + visible);
+				if (visible) pincards.push(pin8);
 				break;
 			case 9: visible = $("#" + pin9.$el.id).is(":visible");
-				console.log("Possibilitycheck9 " + pin9.rank + " " + visible);
+				if (visible) pincards.push(pin9);
 				break;
 		}
+		if (pincards.length > 0) break;
 	}
+	if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
+	else
+	if (piletwo.length > 0) ballcard = piletwo[piletwo.length - 1];
+	else
+	if (pilethree.length > 0) ballcard = pilethree[pilethree.length - 1];
+	result = validate(pincards, ballcard);
 	return result;
 }
 function validate(pincards, ballcard) {
