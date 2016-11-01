@@ -89,6 +89,7 @@ function possibilitycheck() {
 	var visible;
 	var pincards = [];
 	var ballcard = null;
+	var currentpile = 1;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
 			case 0: visible = $("#" + pin0.$el.id).is(":visible");
@@ -124,12 +125,40 @@ function possibilitycheck() {
 		}
 		if (pincards.length > 0) break;
 	}
-	if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
-	else
-	if (piletwo.length > 0) ballcard = piletwo[piletwo.length - 1];
-	else
-	if (pilethree.length > 0) ballcard = pilethree[pilethree.length - 1];
-	result = validate(pincards, ballcard);
+	switch (currentpile) {
+		case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
+			else
+			if (piletwo.length > 0) {
+				ballcard = piletwo[piletwo.length - 1];
+				currentpile = 2;
+			}
+			else
+			if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+				currentpile = 3;
+			}
+			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
+		case 2: if (piletwo.length > 0) {
+				ballcard = piletwo[piletwo.length - 1];
+				currentpile = 2;
+			}
+			else
+			if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+				currentpile = 3;
+			}
+			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
+		case 3: if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+			}
+			result = validate(pincards, ballcard);
+	}
 	return result;
 }
 function validate(pincards, ballcard) {
