@@ -135,14 +135,6 @@ function validate(pincards, ballcard) {
 		if (sum > 9) sum = sum % 10;
 		valid = (sum === (ballcard.rank % 10));
 	}
-	if (valid) {
-		for (var i = 0; i < pincards.length; i++) {
-			$("#" + pincards[i].$el.id).removeClass('pinselected');
-			$("#" + pincards[i].$el.id).hide();
-		}
-		$("#" + ballcard.$el.id).removeClass('ballselected');
-		$("#" + ballcard.$el.id).hide();
-	}
 	return valid;
 }
 var Deck = (function () {
@@ -450,6 +442,12 @@ var Deck = (function () {
 			if (longpress) {
 				var valid = validate(pinstocheck, balltocheck);
 				if (valid) {
+					for (var i = 0; i < pinstocheck.length; i++) {
+						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
+						$("#" + pinstocheck[i].$el.id).hide();
+					}
+					$("#" + balltocheck.$el.id).removeClass('ballselected');
+					$("#" + balltocheck.$el.id).hide();
 					if (self.x >= minpileone && self.x <= maxpileone) {
 						pileone.splice(-1,1);
 						if (pileone.length > 0) pileone[pileone.length -1].setSide('front');
