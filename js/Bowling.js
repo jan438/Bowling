@@ -86,27 +86,38 @@ function cardtosymbols(card) {
 }
 function possibilitycheck() {
 	var result = false;
+	var visible;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
-			case 0: console.log("Possibilitycheck0 " + pin0.rank + " " + $("#" + pin0.$el.id).is(":hidden"));
+			case 0: visible = $("#" + pin0.$el.id).is(":hidden");
+				console.log("Possibilitycheck0 " + pin0.rank + " " + visible);
 				break;
-			case 1: console.log("Possibilitycheck1 " + pin1.rank + " " + $("#" + pin1.$el.id).is(":hidden"));
+			case 1: visible = $("#" + pin1.$el.id).is(":hidden");
+				console.log("Possibilitycheck1 " + pin1.rank + " " + visible);
 				break;
-			case 2: console.log("Possibilitycheck2 " + pin2.rank + " " + $("#" + pin2.$el.id).is(":hidden"));
+			case 2: visible = $("#" + pin2.$el.id).is(":hidden");
+				console.log("Possibilitycheck2 " + pin2.rank + " " + visible);
 				break;
-			case 3: console.log("Possibilitycheck3 " + pin3.rank + " " + $("#" + pin3.$el.id).is(":hidden"));
+			case 3: visible = $("#" + pin3.$el.id).is(":hidden");
+				console.log("Possibilitycheck3 " + pin3.rank + " " + visible);
 				break;
-			case 4: console.log("Possibilitycheck4 " + pin4.rank + " " + $("#" + pin4.$el.id).is(":hidden"));
+			case 4: visible = $("#" + pin4.$el.id).is(":hidden");
+				console.log("Possibilitycheck4 " + pin4.rank + " " + visible);
 				break;
-			case 5: console.log("Possibilitycheck5 " + pin5.rank + " " + $("#" + pin5.$el.id).is(":hidden"));
+			case 5: visible = $("#" + pin5.$el.id).is(":hidden");
+				console.log("Possibilitycheck5 " + pin5.rank + " " + visible);
 				break;
-			case 6: console.log("Possibilitycheck6 " + pin6.rank + " " + $("#" + pin6.$el.id).is(":hidden"));
+			case 6: visible = $("#" + pin6.$el.id).is(":hidden");
+				console.log("Possibilitycheck6 " + pin6.rank + " " + visible);
 				break;
-			case 7: console.log("Possibilitycheck7 " + pin7.rank + " " + $("#" + pin7.$el.id).is(":hidden"));
+			case 7: visible = $("#" + pin7.$el.id).is(":hidden");
+				console.log("Possibilitycheck7 " + pin7.rank + " " + visible);
 				break;
-			case 8: console.log("Possibilitycheck8 " + pin8.rank + " " + $("#" + pin8.$el.id).is(":hidden"));
+			case 8: visible = $("#" + pin8.$el.id).is(":hidden");
+				console.log("Possibilitycheck8 " + pin8.rank + " " + visible);
 				break;
-			case 9: console.log("Possibilitycheck9 " + pin9.rank + " " + $("#" + pin9.$el.id).is(":hidden"));
+			case 9: visible = $("#" + pin9.$el.id).is(":hidden");
+				console.log("Possibilitycheck9 " + pin9.rank + " " + visible);
 				break;
 		}
 	}
