@@ -90,37 +90,68 @@ function possibilitycheck() {
 	var pincards = [];
 	var ballcard = null;
 	var currentpile = 1;
+	var currentcard = -1;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
 			case 0: visible = $("#" + pin0.$el.id).is(":visible");
-				if (visible) pincards.push(pin0);
+				if (visible) {
+					pincards.push(pin0);
+					currentcard = 0;
+				}
 				break;
 			case 1: visible = $("#" + pin1.$el.id).is(":visible");
-				if (visible) pincards.push(pin1);
+				if (visible) {
+					pincards.push(pin1);
+					currentcard = 1;
+				}
 				break;
 			case 2: visible = $("#" + pin2.$el.id).is(":visible");
-				if (visible) pincards.push(pin2);
+				if (visible) {
+					pincards.push(pin2);
+					currentcard = 2;
+				}
 				break;
 			case 3: visible = $("#" + pin3.$el.id).is(":visible");
-				if (visible) pincards.push(pin3);
+				if (visible) {
+					pincards.push(pin3);
+					currentcard = 3;
+				}
 				break;
 			case 4: visible = $("#" + pin4.$el.id).is(":visible");
-				if (visible) pincards.push(pin4);
+				if (visible) {
+					pincards.push(pin4);
+					currentcard = 4;
+				}
 				break;
 			case 5: visible = $("#" + pin5.$el.id).is(":visible");
-				if (visible) pincards.push(pin5);
+				if (visible) {
+					pincards.push(pin5);
+					currentcard = 5;
+				}
 				break;
 			case 6: visible = $("#" + pin6.$el.id).is(":visible");
-				if (visible) pincards.push(pin6);
+				if (visible) {
+					pincards.push(pin6);
+					currentcard = 6;
+				}
 				break;
 			case 7: visible = $("#" + pin7.$el.id).is(":visible");
-				if (visible) pincards.push(pin7);
+				if (visible) {
+					pincards.push(pin7);
+					currentcard = 7;
+				}
 				break;
 			case 8: visible = $("#" + pin8.$el.id).is(":visible");
-				if (visible) pincards.push(pin8);
+				if (visible) {
+					pincards.push(pin8);
+					currentcard = 8;
+				}
 				break;
 			case 9: visible = $("#" + pin9.$el.id).is(":visible");
-				if (visible) pincards.push(pin9);
+				if (visible) {
+					pincards.push(pin9);
+					currentcard = 9;
+				}
 				break;
 		}
 		if (pincards.length > 0) break;
@@ -158,6 +189,100 @@ function possibilitycheck() {
 				ballcard = pilethree[pilethree.length - 1];
 			}
 			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
+	}
+	for (var i = currentcard + 1; i < countpincards; i++) {
+		switch (i) {
+			case 2: visible = $("#" + pin2.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin2);
+					currentcard = 2;
+				}
+				break;
+			case 3: visible = $("#" + pin3.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin3);
+					currentcard = 3;
+				}
+				break;
+			case 4: visible = $("#" + pin4.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin4);
+					currentcard = 4;
+				}
+				break;
+			case 5: visible = $("#" + pin5.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin5);
+					currentcard = 5;
+				}
+				break;
+			case 6: visible = $("#" + pin6.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin6);
+					currentcard = 6;
+				}
+				break;
+			case 7: visible = $("#" + pin7.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin7);
+					currentcard = 7;
+				}
+				break;
+			case 8: visible = $("#" + pin8.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin8);
+					currentcard = 8;
+				}
+				break;
+			case 9: visible = $("#" + pin9.$el.id).is(":visible");
+				if (visible) {
+					pincards.push(pin9);
+					currentcard = 9;
+				}
+				break;
+		}
+		if (pincards.length > 1) break;
+	}
+	currentpile = 1;
+	switch (currentpile) {
+		case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
+			else
+			if (piletwo.length > 0) {
+				ballcard = piletwo[piletwo.length - 1];
+				currentpile = 2;
+			}
+			else
+			if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+				currentpile = 3;
+			}
+			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
+		case 2: if (piletwo.length > 0) {
+				ballcard = piletwo[piletwo.length - 1];
+				currentpile = 2;
+			}
+			else
+			if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+				currentpile = 3;
+			}
+			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
+		case 3: if (pilethree.length > 0) {
+				ballcard = pilethree[pilethree.length - 1];
+			}
+			result = validate(pincards, ballcard);
+			if (result) {
+				return result;
+			}
 	}
 	return result;
 }
