@@ -89,34 +89,34 @@ function possibilitycheck() {
 	var visible;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
-			case 0: visible = $("#" + pin0.$el.id).is(":hidden");
+			case 0: visible = $("#" + pin0.$el.id).is(":visible");
 				console.log("Possibilitycheck0 " + pin0.rank + " " + visible);
 				break;
-			case 1: visible = $("#" + pin1.$el.id).is(":hidden");
+			case 1: visible = $("#" + pin1.$el.id).is(":visible");
 				console.log("Possibilitycheck1 " + pin1.rank + " " + visible);
 				break;
-			case 2: visible = $("#" + pin2.$el.id).is(":hidden");
+			case 2: visible = $("#" + pin2.$el.id).is(":visible");
 				console.log("Possibilitycheck2 " + pin2.rank + " " + visible);
 				break;
-			case 3: visible = $("#" + pin3.$el.id).is(":hidden");
+			case 3: visible = $("#" + pin3.$el.id).is(":visible");
 				console.log("Possibilitycheck3 " + pin3.rank + " " + visible);
 				break;
-			case 4: visible = $("#" + pin4.$el.id).is(":hidden");
+			case 4: visible = $("#" + pin4.$el.id).is(":visible");
 				console.log("Possibilitycheck4 " + pin4.rank + " " + visible);
 				break;
-			case 5: visible = $("#" + pin5.$el.id).is(":hidden");
+			case 5: visible = $("#" + pin5.$el.id).is(":visible");
 				console.log("Possibilitycheck5 " + pin5.rank + " " + visible);
 				break;
-			case 6: visible = $("#" + pin6.$el.id).is(":hidden");
+			case 6: visible = $("#" + pin6.$el.id).is(":visible");
 				console.log("Possibilitycheck6 " + pin6.rank + " " + visible);
 				break;
-			case 7: visible = $("#" + pin7.$el.id).is(":hidden");
+			case 7: visible = $("#" + pin7.$el.id).is(":visible");
 				console.log("Possibilitycheck7 " + pin7.rank + " " + visible);
 				break;
-			case 8: visible = $("#" + pin8.$el.id).is(":hidden");
+			case 8: visible = $("#" + pin8.$el.id).is(":visible");
 				console.log("Possibilitycheck8 " + pin8.rank + " " + visible);
 				break;
-			case 9: visible = $("#" + pin9.$el.id).is(":hidden");
+			case 9: visible = $("#" + pin9.$el.id).is(":visible");
 				console.log("Possibilitycheck9 " + pin9.rank + " " + visible);
 				break;
 		}
