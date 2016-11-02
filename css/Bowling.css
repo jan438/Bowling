@@ -416,3 +416,6 @@ table#bowlingscoring {
 .pinselected {
   border: 3px solid #9966ff;
 }
+h4#swalnextball {
+   color: darkgreen;
+}
