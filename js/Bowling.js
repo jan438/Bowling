@@ -39,16 +39,7 @@ var countballselected;
 var countpinselected;
 var pinstocheck;
 var balltocheck;
-var pin0;
-var pin1;
-var pin2;
-var pin3;
-var pin4;
-var pin5;
-var pin6;
-var pin7;
-var pin8;
-var pin9;
+var pincard = new Array(countpincards);
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -113,63 +104,63 @@ function possibilitycheck() {
 	var currentcard = -1;
 	for (var i = 0; i < countpincards; i++) {
 		switch (i) {
-			case 0: visible = $("#" + pin0.$el.id).is(":visible");
+			case 0: visible = $("#" + pincard[0].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin0);
+					pincards.push(pincard[0]);
 					currentcard = 0;
 				}
 				break;
-			case 1: visible = $("#" + pin1.$el.id).is(":visible");
+			case 1: visible = $("#" + pincard[1].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin1);
+					pincards.push(pincard[1]);
 					currentcard = 1;
 				}
 				break;
-			case 2: visible = $("#" + pin2.$el.id).is(":visible");
+			case 2: visible = $("#" + pincard[2].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin2);
+					pincards.push(pincard[2]);
 					currentcard = 2;
 				}
 				break;
-			case 3: visible = $("#" + pin3.$el.id).is(":visible");
+			case 3: visible = $("#" + pincard[3].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin3);
+					pincards.push(pincard[3]);
 					currentcard = 3;
 				}
 				break;
-			case 4: visible = $("#" + pin4.$el.id).is(":visible");
+			case 4: visible = $("#" + pincard[4].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin4);
+					pincards.push(pincard[4]);
 					currentcard = 4;
 				}
 				break;
-			case 5: visible = $("#" + pin5.$el.id).is(":visible");
+			case 5: visible = $("#" + pincard[5].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin5);
+					pincards.push(pincard[5]);
 					currentcard = 5;
 				}
 				break;
-			case 6: visible = $("#" + pin6.$el.id).is(":visible");
+			case 6: visible = $("#" + pincard[6].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin6);
+					pincards.push(pincard[6]);
 					currentcard = 6;
 				}
 				break;
-			case 7: visible = $("#" + pin7.$el.id).is(":visible");
+			case 7: visible = $("#" + pincard[7].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin7);
+					pincards.push(pincard[7]);
 					currentcard = 7;
 				}
 				break;
-			case 8: visible = $("#" + pin8.$el.id).is(":visible");
+			case 8: visible = $("#" + pincard[8].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin8);
+					pincards.push(pincard[8]);
 					currentcard = 8;
 				}
 				break;
-			case 9: visible = $("#" + pin9.$el.id).is(":visible");
+			case 9: visible = $("#" + pincard[9].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin9);
+					pincards.push(pincard[9]);
 					currentcard = 9;
 				}
 				break;
@@ -215,51 +206,51 @@ function possibilitycheck() {
 	}
 	for (var i = currentcard + 1; i < countpincards; i++) {
 		switch (i) {
-			case 2: visible = $("#" + pin2.$el.id).is(":visible");
+			case 2: visible = $("#" + pincard[2].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin2);
+					pincards.push(pincard[2]);
 					currentcard = 2;
 				}
 				break;
-			case 3: visible = $("#" + pin3.$el.id).is(":visible");
+			case 3: visible = $("#" + pincard[3].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin3);
+					pincards.push(pincard[3]);
 					currentcard = 3;
 				}
 				break;
-			case 4: visible = $("#" + pin4.$el.id).is(":visible");
+			case 4: visible = $("#" + pincard[4].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin4);
+					pincards.push(pincard[4]);
 					currentcard = 4;
 				}
 				break;
-			case 5: visible = $("#" + pin5.$el.id).is(":visible");
+			case 5: visible = $("#" + pincard[5].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin5);
+					pincards.push(pincard[5]);
 					currentcard = 5;
 				}
 				break;
-			case 6: visible = $("#" + pin6.$el.id).is(":visible");
+			case 6: visible = $("#" + pincard[6].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin6);
+					pincards.push(pincard[6]);
 					currentcard = 6;
 				}
 				break;
-			case 7: visible = $("#" + pin7.$el.id).is(":visible");
+			case 7: visible = $("#" + pincard[7].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin7);
+					pincards.push(pincard[7]);
 					currentcard = 7;
 				}
 				break;
-			case 8: visible = $("#" + pin8.$el.id).is(":visible");
+			case 8: visible = $("#" + pincard[8].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin8);
+					pincards.push(pincard[8]);
 					currentcard = 8;
 				}
 				break;
-			case 9: visible = $("#" + pin9.$el.id).is(":visible");
+			case 9: visible = $("#" + pincard[9].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin9);
+					pincards.push(pincard[9]);
 					currentcard = 9;
 				}
 				break;
@@ -306,45 +297,45 @@ function possibilitycheck() {
 	}
 	for (var i = currentcard + 1; i < countpincards; i++) {
 		switch (i) {
-			case 3: visible = $("#" + pin3.$el.id).is(":visible");
+			case 3: visible = $("#" + pincard[3].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin3);
+					pincards.push(pincard[3]);
 					currentcard = 3;
 				}
 				break;
-			case 4: visible = $("#" + pin4.$el.id).is(":visible");
+			case 4: visible = $("#" + pincard[4].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin4);
+					pincards.push(pincard[4]);
 					currentcard = 4;
 				}
 				break;
-			case 5: visible = $("#" + pin5.$el.id).is(":visible");
+			case 5: visible = $("#" + pincard[5].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin5);
+					pincards.push(pincard[5]);
 					currentcard = 5;
 				}
 				break;
-			case 6: visible = $("#" + pin6.$el.id).is(":visible");
+			case 6: visible = $("#" + pincard[6].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin6);
+					pincards.push(pincard[6]);
 					currentcard = 6;
 				}
 				break;
-			case 7: visible = $("#" + pin7.$el.id).is(":visible");
+			case 7: visible = $("#" + pincard[7].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin7);
+					pincards.push(pincard[7]);
 					currentcard = 7;
 				}
 				break;
-			case 8: visible = $("#" + pin8.$el.id).is(":visible");
+			case 8: visible = $("#" + pincard[8].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin8);
+					pincards.push(pincard[8]);
 					currentcard = 8;
 				}
 				break;
-			case 9: visible = $("#" + pin9.$el.id).is(":visible");
+			case 9: visible = $("#" + pincard[9].$el.id).is(":visible");
 				if (visible) {
-					pincards.push(pin9);
+					pincards.push(pincard[9]);
 					currentcard = 9;
 				}
 				break;
@@ -948,6 +939,7 @@ var Deck = (function () {
 		piletwo = [];
 		pilethree = [];
 		pinstocheck = [];
+		pincard = new Array(countpincards);
 		balltocheck = null;
 		$("#td01").html(0);
 		$("#td02").html(0);
@@ -989,25 +981,25 @@ var Deck = (function () {
 				if (i < countpincards) {
 					card.setSide('front');
 					switch (i) {
-						case 0: pin0 = card;
+						case 0: pincard[0] = card;
 							break;
-						case 1: pin1 = card;
+						case 1: pincard[1] = card;
 							break;
-						case 2: pin2 = card;
+						case 2: pincard[2] = card;
 							break;
-						case 3: pin3 = card;
+						case 3: pincard[3] = card;
 							break;
-						case 4: pin4 = card;
+						case 4: pincard[4] = card;
 							break;
-						case 5: pin5 = card;
+						case 5: pincard[5] = card;
 							break;
-						case 6: pin6 = card;
+						case 6: pincard[6] = card;
 							break;
-						case 7: pin7 = card;
+						case 7: pincard[7] = card;
 							break;
-						case 8: pin8 = card;
+						case 8: pincard[8] = card;
 							break;
-						case 9: pin9 = card;
+						case 9: pincard[9] = card;
 							break;
 					}
 				}
