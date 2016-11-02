@@ -84,6 +84,26 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
+function nextball() {
+	if (pileone.length > 0) {
+		$("#" + pileone[pileone.length -1].$el.id).removeClass('ballselected');
+		$("#" + pileone[pileone.length -1].$el.id).hide();
+		pileone.splice(-1,1);
+		if (pileone.length > 0) pileone[pileone.length -1].setSide('front');
+	}
+	if (piletwo.length > 0) {
+		$("#" + piletwo[piletwo.length -1].$el.id).removeClass('ballselected');
+		$("#" + piletwo[piletwo.length -1].$el.id).hide();
+		piletwo.splice(-1,1);
+		if (piletwo.length > 0) piletwo[piletwo.length -1].setSide('front');
+	}
+	if (pilethree.length > 0) {
+		$("#" + pilethree[pilethree.length -1].$el.id).removeClass('ballselected');
+		$("#" + pilethree[pilethree.length -1].$el.id).hide();
+		pilethree.splice(-1,1);
+		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
+	}
+}
 function possibilitycheck() {
 	var result = false;
 	var visible;
@@ -712,6 +732,7 @@ var Deck = (function () {
 				}
 				else {
 					var result = possibilitycheck();
+					if (!result) nextball();
 				}
 			}
 			if (e.type === 'mouseup') {
