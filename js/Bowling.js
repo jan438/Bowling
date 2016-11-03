@@ -515,10 +515,13 @@ var Deck = (function () {
 						pinstocheck.push(self);
 					}
 					else {
-						var index = pincard.indexOf(pinstocheck[pinstocheck.length - 1]);
-						if (neighbors[index].indexOf(i) >= 0) {
-							$("#" + $el.id).addClass('pinselected');
-							pinstocheck.push(self);
+						for (var j = 0; j < pinstocheck.length; j++) {
+							var index = pincard.indexOf(pinstocheck[j]);
+							if (neighbors[index].indexOf(i) >= 0) {
+								$("#" + $el.id).addClass('pinselected');
+								pinstocheck.push(self);
+								break;
+							}
 						}
 					}
 				}
