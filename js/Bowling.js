@@ -96,14 +96,14 @@ function nextball() {
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 	}
 }
-function possibilitycheck() {
+function possibilitycheck(startindex) {
 	var result = false;
 	var visible;
 	var pincards = [];
 	var ballcard = null;
 	var currentpile = 1;
 	var currentcard = -1;
-	for (var i = 0; i < countpincards; i++) {
+	for (var i = startindex; i < countpincards; i++) {
 		visible = $("#" + pincard[i].$el.id).is(":visible");
 		if (visible) {
 			pincards.push(pincard[i]);
@@ -156,89 +156,93 @@ function possibilitycheck() {
 		}
 		if (pincards.length > 1) break;
 	}
-	currentpile = 1;
-	switch (currentpile) {
-		case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
-			else
-			if (piletwo.length > 0) {
-				ballcard = piletwo[piletwo.length - 1];
-				currentpile = 2;
-			}
-			else
-			if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-				currentpile = 3;
-			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
-		case 2: if (piletwo.length > 0) {
-				ballcard = piletwo[piletwo.length - 1];
-				currentpile = 2;
-			}
-			else
-			if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-				currentpile = 3;
-			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
-		case 3: if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
-	}
-	for (var i = currentcard + 1; i < countpincards; i++) {
-		visible = $("#" + pincard[i].$el.id).is(":visible");
-		if (visible && neighbors[currentcard].indexOf(i) >= 0) {
-			pincards.push(pincard[i]);
-			currentcard = i;
+	if (pincards.length === 2) {
+		currentpile = 1;
+		switch (currentpile) {
+			case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
+				else
+				if (piletwo.length > 0) {
+					ballcard = piletwo[piletwo.length - 1];
+					currentpile = 2;
+				}
+				else
+				if (pilethree.length > 0) {
+					ballcard = pilethree[pilethree.length - 1];
+					currentpile = 3;
+				}
+				result = validate(pincards, ballcard);
+				if (result) {
+					return result;
+				}
+			case 2: if (piletwo.length > 0) {
+					ballcard = piletwo[piletwo.length - 1];
+					currentpile = 2;
+				}
+				else
+				if (pilethree.length > 0) {
+					ballcard = pilethree[pilethree.length - 1];
+					currentpile = 3;
+				}
+				result = validate(pincards, ballcard);
+				if (result) {
+					return result;
+				}
+			case 3: if (pilethree.length > 0) {
+					ballcard = pilethree[pilethree.length - 1];
+				}
+				result = validate(pincards, ballcard);
+				if (result) {
+					return result;
+				}
 		}
-		if (pincards.length > 2) break;
-	}
-	currentpile = 1;
-	switch (currentpile) {
-		case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
-			else
-			if (piletwo.length > 0) {
-				ballcard = piletwo[piletwo.length - 1];
-				currentpile = 2;
+		for (var i = currentcard + 1; i < countpincards; i++) {
+			visible = $("#" + pincard[i].$el.id).is(":visible");
+			if (visible && neighbors[currentcard].indexOf(i) >= 0) {
+				pincards.push(pincard[i]);
+				currentcard = i;
 			}
-			else
-			if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-				currentpile = 3;
+			if (pincards.length > 2) break;
+		}
+		if (pincards.length === 3) {
+			currentpile = 1;
+			switch (currentpile) {
+				case 1: if (pileone.length > 0) ballcard = pileone[pileone.length - 1];
+					else
+					if (piletwo.length > 0) {
+						ballcard = piletwo[piletwo.length - 1];
+						currentpile = 2;
+					}
+					else
+					if (pilethree.length > 0) {
+						ballcard = pilethree[pilethree.length - 1];
+						currentpile = 3;
+					}
+					result = validate(pincards, ballcard);
+					if (result) {
+						return result;
+					}
+				case 2: if (piletwo.length > 0) {
+						ballcard = piletwo[piletwo.length - 1];
+						currentpile = 2;
+					}
+					else
+					if (pilethree.length > 0) {
+						ballcard = pilethree[pilethree.length - 1];
+						currentpile = 3;
+					}
+					result = validate(pincards, ballcard);
+					if (result) {
+						return result;
+					}
+				case 3: if (pilethree.length > 0) {
+						ballcard = pilethree[pilethree.length - 1];
+					}
+					result = validate(pincards, ballcard);
+					if (result) {
+						return result;
+					}
 			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
-		case 2: if (piletwo.length > 0) {
-				ballcard = piletwo[piletwo.length - 1];
-				currentpile = 2;
-			}
-			else
-			if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-				currentpile = 3;
-			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
-		case 3: if (pilethree.length > 0) {
-				ballcard = pilethree[pilethree.length - 1];
-			}
-			result = validate(pincards, ballcard);
-			if (result) {
-				return result;
-			}
+		}
 	}
 	return result;
 }
@@ -595,7 +599,16 @@ var Deck = (function () {
 					pinstocheck = [];
 				}
 				else {
-					var result = possibilitycheck();
+					var result = possibilitycheck(0);
+					if (!result) result = possibilitycheck(1);
+					if (!result) result = possibilitycheck(2);
+					if (!result) result = possibilitycheck(3);
+					if (!result) result = possibilitycheck(4);
+					if (!result) result = possibilitycheck(5);
+					if (!result) result = possibilitycheck(6);
+					if (!result) result = possibilitycheck(7);
+					if (!result) result = possibilitycheck(8);
+					if (!result) result = possibilitycheck(9);
 					if (!result) nextball();
 				}
 			}
