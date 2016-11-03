@@ -525,6 +525,7 @@ var Deck = (function () {
 						}
 					}
 				}
+				break;
 			}
 		}
 		var startPos = {};
