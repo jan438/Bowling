@@ -510,8 +510,17 @@ var Deck = (function () {
 					pinstocheck.splice(index, 1);
 				}
 				else if (countpinselected < 3) {
-					$("#" + $el.id).addClass('pinselected');
-					pinstocheck.push(self);
+					if (countpinselected === 0) {
+						$("#" + $el.id).addClass('pinselected');
+						pinstocheck.push(self);
+					}
+					else {
+						var index = pincard.indexOf(pinstocheck[pinstocheck.length - 1]);
+						if (neighbors[index].indexOf(i) >= 0) {
+							$("#" + $el.id).addClass('pinselected');
+							pinstocheck.push(self);
+						}
+					}
 				}
 			}
 		}
