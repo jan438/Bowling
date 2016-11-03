@@ -599,16 +599,17 @@ var Deck = (function () {
 					pinstocheck = [];
 				}
 				else {
-					var result = possibilitycheck(0);
-					if (!result) result = possibilitycheck(1);
-					if (!result) result = possibilitycheck(2);
-					if (!result) result = possibilitycheck(3);
-					if (!result) result = possibilitycheck(4);
-					if (!result) result = possibilitycheck(5);
-					if (!result) result = possibilitycheck(6);
-					if (!result) result = possibilitycheck(7);
-					if (!result) result = possibilitycheck(8);
-					if (!result) result = possibilitycheck(9);
+					var result = false;
+					if (!result && $("#" + pincard[0].$el.id).is(":visible")) result = possibilitycheck(0);
+					if (!result && $("#" + pincard[1].$el.id).is(":visible")) result = possibilitycheck(1);
+					if (!result && $("#" + pincard[2].$el.id).is(":visible")) result = possibilitycheck(2);
+					if (!result && $("#" + pincard[3].$el.id).is(":visible")) result = possibilitycheck(3);
+					if (!result && $("#" + pincard[4].$el.id).is(":visible")) result = possibilitycheck(4);
+					if (!result && $("#" + pincard[5].$el.id).is(":visible")) result = possibilitycheck(5);
+					if (!result && $("#" + pincard[6].$el.id).is(":visible")) result = possibilitycheck(6);
+					if (!result && $("#" + pincard[7].$el.id).is(":visible")) result = possibilitycheck(7);
+					if (!result && $("#" + pincard[8].$el.id).is(":visible")) result = possibilitycheck(8);
+					if (!result && $("#" + pincard[9].$el.id).is(":visible")) result = possibilitycheck(9);
 					if (!result) nextball();
 				}
 			}
