@@ -150,7 +150,7 @@ function possibilitycheck() {
 	}
 	for (var i = currentcard + 1; i < countpincards; i++) {
 		visible = $("#" + pincard[i].$el.id).is(":visible");
-		if (visible) {
+		if (visible && neighbors[currentcard].indexOf(i) >= 0) {
 			pincards.push(pincard[i]);
 			currentcard = i;
 		}
@@ -196,7 +196,7 @@ function possibilitycheck() {
 	}
 	for (var i = currentcard + 1; i < countpincards; i++) {
 		visible = $("#" + pincard[i].$el.id).is(":visible");
-		if (visible) {
+		if (visible && neighbors[currentcard].indexOf(i) >= 0) {
 			pincards.push(pincard[i]);
 			currentcard = i;
 		}
