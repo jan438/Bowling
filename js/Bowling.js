@@ -40,6 +40,7 @@ var countpinselected;
 var pinstocheck;
 var balltocheck;
 var pincard = new Array(countpincards);
+var neighbors = [[1,4],[0,2,4,5],[1,3,5,6],[2,6],[0,1,5,7],[1,2,4,6,7,8],[2,3,5,8],[4,5,8,9],[5,6,7,9],[7,8]];
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -502,7 +503,7 @@ var Deck = (function () {
 		}
 		for (var i = 0; i < countpincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
-				console.log("Pin: " + i + " selected");
+				console.log("Pin: " + i + " selected with neighbors " + neighbors[i]);
 				if ($("#" + $el.id).hasClass('pinselected')) {
 					$("#" + $el.id).removeClass('pinselected');
 					var index = pinstocheck.indexOf(self);
