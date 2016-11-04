@@ -521,7 +521,14 @@ var Deck = (function () {
 			if (longpress) {
 				var valid = validate(pinstocheck, balltocheck);
 				if (valid) {
+					chainpins = [];
 					for (var i = 0; i < pinstocheck.length; i++) {
+						var neighborcards = neighbors[pincard.indexOf(pinstocheck[i])];
+						for (var j = 0; j < neighborcards.length; j++) {
+							if (chainpins.indexOf(pincard.indexOf(neighborcards[j])) === -1) {
+								chainpins.push(neighborcards[j]);
+							}
+						}
 						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
 						$("#" + pinstocheck[i].$el.id).hide();
 					}
