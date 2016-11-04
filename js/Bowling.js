@@ -449,8 +449,16 @@ var Deck = (function () {
 				}
 				else if (countpinselected < 3) {
 					if (countpinselected === 0) {
-						$("#" + $el.id).addClass('pinselected');
-						pinstocheck.push(self);
+						if (ball === 1 && cardperball === 1) {
+							if (headpins.indexOf(i) >= 0) {
+								$("#" + $el.id).addClass('pinselected');
+								pinstocheck.push(self);
+							}
+						}
+						else {
+							$("#" + $el.id).addClass('pinselected');
+							pinstocheck.push(self);
+						}
 					}
 					else {
 						for (var j = 0; j < pinstocheck.length; j++) {
@@ -531,6 +539,7 @@ var Deck = (function () {
 						if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 					}
 					pinstocheck = [];
+					cardperball = cardperball + 1;
 				}
 				else {
 					var result = false;
@@ -762,6 +771,8 @@ var Deck = (function () {
 		pinstocheck = [];
 		pincard = new Array(countpincards);
 		balltocheck = null;
+		ball = 1;
+		cardperball = 1;
 		$("#td01").html(0);
 		$("#td02").html(0);
 		$("#td03").html(0);
