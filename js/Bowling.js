@@ -41,6 +41,9 @@ var pinstocheck;
 var balltocheck;
 var pincard = new Array(countpincards);
 var neighbors = [[1,4],[0,2,4,5],[1,3,5,6],[2,6],[0,1,5,7],[1,2,4,6,7,8],[2,3,5,8],[4,5,8,9],[5,6,7,9],[7,8]];
+var headpins = [4,6,7,8,9];
+var ball = 1;
+var cardperball = 1;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
