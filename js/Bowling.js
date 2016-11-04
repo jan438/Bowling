@@ -529,11 +529,8 @@ var Deck = (function () {
 					for (var i = 0; i < pinstocheck.length; i++) {
 						var neighborcards = neighbors[pincard.indexOf(pinstocheck[i])];
 						for (var j = 0; j < neighborcards.length; j++) {
-							var neighborcard = neighborcards[j];
-							var t1 = indicespinstocheck.indexOf(neighborcard);
-							var t2 = chainpins.indexOf(neighborcard);
 							if (chainpins.indexOf(pincard.indexOf(neighborcards[j])) === -1) {
-								if (t1 === -1 && t2 === -1) chainpins.push(neighborcards[j]);
+								if (indicespinstocheck.indexOf(neighborcards[j]) === -1 && chainpins.indexOf(neighborcards[j]) === -1) chainpins.push(neighborcards[j]);
 							}
 						}
 						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
