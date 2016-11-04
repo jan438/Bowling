@@ -522,6 +522,10 @@ var Deck = (function () {
 				var valid = validate(pinstocheck, balltocheck);
 				if (valid) {
 					chainpins = [];
+					var indicespinstocheck = [];
+					for (var i = 0; i < pinstocheck.length; i++) {
+						indicespinstocheck.push(pincard.indexOf(pinstocheck[i]));
+					}
 					for (var i = 0; i < pinstocheck.length; i++) {
 						var neighborcards = neighbors[pincard.indexOf(pinstocheck[i])];
 						for (var j = 0; j < neighborcards.length; j++) {
