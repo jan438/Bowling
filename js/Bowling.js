@@ -44,6 +44,7 @@ var neighbors = [[1,4],[0,2,4,5],[1,3,5,6],[2,6],[0,1,5,7],[1,2,4,6,7,8],[2,3,5,
 var headpins = [4,6,7,8,9];
 var ball = 1;
 var cardperball = 1;
+var chainpins = [];
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -773,6 +774,7 @@ var Deck = (function () {
 		balltocheck = null;
 		ball = 1;
 		cardperball = 1;
+		chainpins = [];
 		$("#td01").html(0);
 		$("#td02").html(0);
 		$("#td03").html(0);
