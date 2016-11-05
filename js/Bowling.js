@@ -457,8 +457,16 @@ var Deck = (function () {
 							}
 						}
 						else {
-							$("#" + $el.id).addClass('pinselected');
-							pinstocheck.push(self);
+							if (ball === 1 && cardperball === 2) {
+								if (chainpins.indexOf(i) >= 0) {
+									$("#" + $el.id).addClass('pinselected');
+									pinstocheck.push(self);
+								}
+							}
+							else {
+								$("#" + $el.id).addClass('pinselected');
+								pinstocheck.push(self);
+							}
 						}
 					}
 					else {
