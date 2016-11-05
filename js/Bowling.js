@@ -45,6 +45,8 @@ var headpins = [4,6,7,8,9];
 var ball = 1;
 var cardperball = 1;
 var chainpins;
+var knockeddownpins = 0;
+var strid;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -99,6 +101,8 @@ function nextball() {
 		pilethree.splice(-1,1);
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 	}
+	strid = "0" + ball;
+	$("#td" + strid).html(knockeddownpins);
 }
 function possibilitycheck(startindex) {
 	var result = false;
@@ -558,6 +562,7 @@ var Deck = (function () {
 						pilethree.splice(-1,1);
 						if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 					}
+					knockeddownpins = knockeddownpins + pinstocheck.length;
 					pinstocheck = [];
 					cardperball = cardperball + 1;
 				}
@@ -800,6 +805,7 @@ var Deck = (function () {
 		balltocheck = null;
 		ball = 1;
 		cardperball = 1;
+		knockeddownpins = 0;
 		$("#td01").html(0);
 		$("#td02").html(0);
 		$("#td03").html(0);
