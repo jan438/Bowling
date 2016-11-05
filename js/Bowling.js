@@ -101,8 +101,11 @@ function nextball() {
 		pilethree.splice(-1,1);
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 	}
-	strid = "0" + ball;
+	if (ball < 10) strid = "0" + ball;
+	else strid = "" + ball;
 	$("#td" + strid).html(knockeddownpins);
+	ball = ball + 1;
+	knockeddownpins = 0;
 }
 function possibilitycheck(startindex) {
 	var result = false;
@@ -803,41 +806,8 @@ var Deck = (function () {
 		pinstocheck = [];
 		pincard = new Array(countpincards);
 		balltocheck = null;
-		ball = 1;
 		cardperball = 1;
 		knockeddownpins = 0;
-		$("#td01").html(0);
-		$("#td02").html(0);
-		$("#td03").html(0);
-		$("#td04").html(0);
-		$("#td05").html(0);
-		$("#td06").html(0);
-		$("#td07").html(0);
-		$("#td08").html(0);
-		$("#td09").html(0);
-		$("#td10").html(0);
-		$("#td11").html(0);
-		$("#td12").html(0);
-		$("#td13").html(0);
-		$("#td14").html(0);
-		$("#td15").html(0);
-		$("#td16").html(0);
-		$("#td17").html(0);
-		$("#td18").html(0);
-		$("#td19").html(0);
-		$("#td20").html(0);
-		$("#td21").html(0);
-		$("#to01").html(0);
-		$("#to02").html(0);
-		$("#to03").html(0);
-		$("#to04").html(0);
-		$("#to05").html(0);
-		$("#to06").html(0);
-		$("#to07").html(0);
-		$("#to08").html(0);
-		$("#to09").html(0);
-		$("#to10").html(0);
-		$("#to11").html(0);
 		var cards = _deck4.cards;
 		var len = cards.length;
 		__fontSize = fontSize();
