@@ -5,7 +5,7 @@ var $container = document.getElementById('container');
 var $topbar = document.getElementById('topbar');
 var $Bowling = document.createElement('button');
 $Bowling.setAttribute("style", "background-color:Chartreuse; font-size:2em;");
-$Bowling.setAttribute("id", "solitaire");
+$Bowling.setAttribute("id", "bowling");
 $Bowling.textContent = 'Bowling';
 $topbar.appendChild($Bowling);
 var deck = Deck();
