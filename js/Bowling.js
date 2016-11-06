@@ -47,6 +47,7 @@ var cardperball = 1;
 var chainpins;
 var knockeddownpins = 0;
 var strid;
+var previousscore;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -115,6 +116,7 @@ function nextball() {
 		ball = ball + 1;
 		$('#bowling').trigger('click');
 	}
+	previousscore = knockeddownpins;
 	knockeddownpins = 0;
 }
 function possibilitycheck(startindex) {
