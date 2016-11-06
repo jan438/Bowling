@@ -108,11 +108,13 @@ function nextball() {
 	if ((ball % 2) === 1) {
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
+			$("#td" + strid).html("X");
 			ball = ball + 2;
 			$('#bowling').trigger('click');
 		}
 	}
 	else {
+		if (previousscore + knockeddownpins === 10) $("#td" + strid).html("/");
 		ball = ball + 1;
 		$('#bowling').trigger('click');
 	}
