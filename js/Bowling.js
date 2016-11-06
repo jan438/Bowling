@@ -106,9 +106,15 @@ function nextball() {
 	$("#td" + strid).html(knockeddownpins);
 	if ((ball % 2) === 1) {
 		if (knockeddownpins < 10) ball = ball + 1;
-		else ball = ball + 2;
+		else {
+			ball = ball + 2;
+			$('#bowling').trigger('click');
+		}
 	}
-	else ball = ball + 1;
+	else {
+		ball = ball + 1;
+		$('#bowling').trigger('click');
+	}
 	knockeddownpins = 0;
 }
 function possibilitycheck(startindex) {
