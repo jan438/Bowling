@@ -104,7 +104,11 @@ function nextball() {
 	if (ball < 10) strid = "0" + ball;
 	else strid = "" + ball;
 	$("#td" + strid).html(knockeddownpins);
-	ball = ball + 1;
+	if ((ball % 2) === 1) {
+		if (knockeddownpins < 10) ball = ball + 1;
+		else ball = ball + 2;
+	}
+	else ball = ball + 1;
 	knockeddownpins = 0;
 }
 function possibilitycheck(startindex) {
