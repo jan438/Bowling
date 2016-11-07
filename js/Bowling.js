@@ -104,6 +104,11 @@ function nextball() {
 		pilethree.splice(-1,1);
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 	}
+	gameturn = Math.floor(ball / 2) + 1;
+	if (gameturn < 10) strid = "0" + gameturn;
+	else strid = "" + gameturn;
+	$('#th' + strid).css('background-color','blue');
+	$('#th' + strid).css('color','yellow');
 	if (ball < 10) strid = "0" + ball;
 	else strid = "" + ball;
 	$("#td" + strid).html(knockeddownpins);
