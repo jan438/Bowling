@@ -148,7 +148,7 @@ function possibilitycheck(startindex) {
 		if (result) return result;
 	}
 	if (pilethree.length > 0) {
-		ballcard = pilethree[piletwo.length - 1];
+		ballcard = pilethree[pilethree.length - 1];
 		result = validate(pincards, ballcard);
 		if (result) return result;
 	}
@@ -172,7 +172,7 @@ function possibilitycheck(startindex) {
 			if (result) return result;
 		}
 		if (pilethree.length > 0) {
-			ballcard = pilethree[piletwo.length - 1];
+			ballcard = pilethree[pilethree.length - 1];
 			result = validate(pincards, ballcard);
 			if (result) return result;
 		}
@@ -196,7 +196,7 @@ function possibilitycheck(startindex) {
 				if (result) return result;
 			}
 			if (pilethree.length > 0) {
-				ballcard = pilethree[piletwo.length - 1];
+				ballcard = pilethree[pilethree.length - 1];
 				result = validate(pincards, ballcard);
 				if (result) return result;
 			}
