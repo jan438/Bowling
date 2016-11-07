@@ -48,6 +48,8 @@ var chainpins;
 var knockeddownpins = 0;
 var strid;
 var previousscore;
+var scoreturn;
+var gameturn = 1;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
