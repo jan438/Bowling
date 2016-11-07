@@ -50,6 +50,7 @@ var strid;
 var previousscore;
 var scoreturn;
 var gameturn = 1;
+var totalscore = 0;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -115,15 +116,19 @@ function nextball() {
 	if ((ball % 2) === 1) {
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
+			scoreturn = 10;
 			$("#td" + strid).html("X");
 			ball = ball + 2;
 			$('#bowling').trigger('click');
+			totalscore = totalscore + scoreturn;
 		}
 	}
 	else {
-		if (previousscore + knockeddownpins === 10) $("#td" + strid).html("/");
+		scoreturn = previousscore + knockeddownpins;
+		if (scoreturn === 10) $("#td" + strid).html("/");
 		ball = ball + 1;
 		$('#bowling').trigger('click');
+		totalscore = totalscore + scoreturn;
 	}
 	previousscore = knockeddownpins;
 	knockeddownpins = 0;
