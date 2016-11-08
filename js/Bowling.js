@@ -115,6 +115,8 @@ function nextball() {
 	$('#th' + turnid).css('color','yellow');
 	if (ball < 10) strid = "0" + ball;
 	else strid = "" + ball;
+	$('#td' + strid).css('background-color','green');
+	$('#td' + strid).css('color','yellow');
 	$("#td" + strid).html(knockeddownpins);
 	if ((ball % 2) === 1) {
 		if (knockeddownpins < 10) ball = ball + 1;
