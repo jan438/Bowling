@@ -124,7 +124,12 @@ function nextball() {
 			scoreturn = 10;
 			totalscore = totalscore + scoreturn;
 			$("#td" + strid).html("X");
-			ball = ball + 2;
+			ball = ball + 1;
+			if (ball < 10) strid = "0" + ball;
+			else strid = "" + ball;
+			$('#td' + strid).css('background-color','green');
+			$('#td' + strid).css('color','yellow');
+			ball = ball + 1;
 			$('#bowling').trigger('click');
 		}
 	}
