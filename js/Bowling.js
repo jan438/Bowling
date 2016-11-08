@@ -52,6 +52,8 @@ var previousscore;
 var scoreturn;
 var gameturn = 1;
 var totalscore = 0;
+var sparescored = false;
+var strikescored = false;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
