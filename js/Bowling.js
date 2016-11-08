@@ -128,6 +128,10 @@ function nextball() {
 		scoreturn = previousscore + knockeddownpins;
 		totalscore = totalscore + scoreturn;
 		if (scoreturn === 10) $("#td" + strid).html("/");
+		gameturn = gameturn - 1;
+		if (gameturn < 10) turnid = "0" + gameturn;
+		else turnid = "" + gameturn;
+		$("#to" + turnid).html(totalscore);
 		ball = ball + 1;
 		$('#bowling').trigger('click');
 	}
