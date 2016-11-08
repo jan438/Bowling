@@ -130,6 +130,11 @@ function nextball() {
 			$('#td' + strid).css('background-color','green');
 			$('#td' + strid).css('color','yellow');
 			ball = ball + 1;
+			gameturn = Math.floor(ball / 2) + 1;
+			if (gameturn < 10) turnid = "0" + gameturn;
+			else turnid = "" + gameturn;
+			$('#th' + turnid).css('background-color','blue');
+			$('#th' + turnid).css('color','yellow');
 			$('#bowling').trigger('click');
 		}
 	}
