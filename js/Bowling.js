@@ -47,6 +47,7 @@ var cardperball = 1;
 var chainpins;
 var knockeddownpins = 0;
 var strid;
+var turnid;
 var previousscore;
 var scoreturn;
 var gameturn = 1;
@@ -106,10 +107,10 @@ function nextball() {
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
 	}
 	gameturn = Math.floor(ball / 2) + 1;
-	if (gameturn < 10) strid = "0" + gameturn;
-	else strid = "" + gameturn;
-	$('#th' + strid).css('background-color','blue');
-	$('#th' + strid).css('color','yellow');
+	if (gameturn < 10) turnid = "0" + gameturn;
+	else turnid = "" + gameturn;
+	$('#th' + turnid).css('background-color','blue');
+	$('#th' + turnid).css('color','yellow');
 	if (ball < 10) strid = "0" + ball;
 	else strid = "" + ball;
 	$("#td" + strid).html(knockeddownpins);
@@ -117,18 +118,18 @@ function nextball() {
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
 			scoreturn = 10;
+			totalscore = totalscore + scoreturn;
 			$("#td" + strid).html("X");
 			ball = ball + 2;
 			$('#bowling').trigger('click');
-			totalscore = totalscore + scoreturn;
 		}
 	}
 	else {
 		scoreturn = previousscore + knockeddownpins;
+		totalscore = totalscore + scoreturn;
 		if (scoreturn === 10) $("#td" + strid).html("/");
 		ball = ball + 1;
 		$('#bowling').trigger('click');
-		totalscore = totalscore + scoreturn;
 	}
 	previousscore = knockeddownpins;
 	knockeddownpins = 0;
