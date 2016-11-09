@@ -55,6 +55,7 @@ var totalscore = 0;
 var sparescored = false;
 var strikescored = false;
 var spareturn;
+var striketurn;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -127,10 +128,15 @@ function nextball() {
 			$("#to" + turnid).html(totalscore);
 			sparescored = false;
 		}
+		if (strikescored) {
+			totalscore = totalscore + knockeddownpins;
+		}
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
 			scoreturn = 10;
 			totalscore = totalscore + scoreturn;
+			strikescored = true;
+			striketurn = gameturn;
 			$("#td" + strid).html("X");
 			ball = ball + 1;
 			if (ball < 10) strid = "0" + ball;
@@ -147,6 +153,13 @@ function nextball() {
 		}
 	}
 	else {
+		if (strikescored) {
+			totalscore = totalscore + knockeddownpins;
+			if (striketurn < 10) turnid = "0" + striketurn;
+			else turnid = "" + striketurn;
+			$("#to" + turnid).html(totalscore);
+			strikescored = false;
+		}
 		scoreturn = previousscore + knockeddownpins;
 		totalscore = totalscore + scoreturn;
 		gameturn = gameturn - 1;
