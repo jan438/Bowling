@@ -120,6 +120,13 @@ function nextball() {
 	$('#td' + strid).css('color','yellow');
 	$("#td" + strid).html(knockeddownpins);
 	if ((ball % 2) === 1) {
+		if (sparescored) {
+			totalscore = totalscore + knockeddownpins;
+			if (spareturn < 10) turnid = "0" + spareturn;
+			else turnid = "" + spareturn;
+			$("#to" + turnid).html(totalscore);
+			sparescored = false;
+		}
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
 			scoreturn = 10;
