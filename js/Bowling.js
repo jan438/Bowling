@@ -529,14 +529,14 @@ var Deck = (function () {
 				}
 				else if (countpinselected < 3) {
 					if (countpinselected === 0) {
-						if (ball === 1 && cardperball === 1) {
+						if (cardperball === 1) {
 							if (headpins.indexOf(i) >= 0) {
 								$("#" + $el.id).addClass('pinselected');
 								pinstocheck.push(self);
 							}
 						}
 						else {
-							if (ball === 1 && cardperball === 2) {
+							if (cardperball === 2) {
 								if (chainpins.indexOf(i) >= 0) {
 									$("#" + $el.id).addClass('pinselected');
 									pinstocheck.push(self);
