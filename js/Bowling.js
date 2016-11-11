@@ -885,6 +885,9 @@ var Deck = (function () {
 		__fontSize = fontSize();
 		cards.slice(-20).reverse().forEach(function (card, i) {
 			card.Bowling(i, len, function (i) {
+				var id = i + 1;
+				if (id < 10) $("#cp0" + id).html("XX");
+				else $("#cp" + id).html("XX");
 				if (i < countpincards) {
 					card.setSide('front');
 					switch (i) {
