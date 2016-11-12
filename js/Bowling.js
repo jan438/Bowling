@@ -56,6 +56,7 @@ var sparescored = false;
 var strikescored = false;
 var spareturn;
 var striketurn;
+var playedcards = 0;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -94,6 +95,7 @@ function cardtosymbols(card) {
 function nextball() {
 	if (pileone.length > 0) {
 		$("#" + pileone[pileone.length -1].$el.id).removeClass('ballselected');
+		playedcards = playedcards + 1;
 		console.log("Pileone: " + cardtosymbols(pileone[pileone.length -1]));
 		$("#" + pileone[pileone.length -1].$el.id).hide();
 		pileone.splice(-1,1);
@@ -101,6 +103,7 @@ function nextball() {
 	}
 	if (piletwo.length > 0) {
 		$("#" + piletwo[piletwo.length -1].$el.id).removeClass('ballselected');
+		playedcards = playedcards + 1;
 		console.log("Piletwo: " + cardtosymbols(piletwo[piletwo.length -1]));
 		$("#" + piletwo[piletwo.length -1].$el.id).hide();
 		piletwo.splice(-1,1);
@@ -108,6 +111,7 @@ function nextball() {
 	}
 	if (pilethree.length > 0) {
 		$("#" + pilethree[pilethree.length -1].$el.id).removeClass('ballselected');
+		playedcards = playedcards + 1;
 		console.log("Pilethree: " + cardtosymbols(pilethree[pilethree.length -1]));
 		$("#" + pilethree[pilethree.length -1].$el.id).hide();
 		pilethree.splice(-1,1);
@@ -623,10 +627,12 @@ var Deck = (function () {
 								if (indicespinstocheck.indexOf(neighborcards[j]) === -1 && chainpins.indexOf(neighborcards[j]) === -1) chainpins.push(neighborcards[j]);
 							}
 						}
+						playedcards = playedcards + 1;
 						console.log("Pin to check: " + cardtosymbols(pinstocheck[i]));
 						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
 						$("#" + pinstocheck[i].$el.id).hide();
 					}
+					playedcards = playedcards + 1;
 					console.log("Ball to check: " + cardtosymbols(balltocheck));
 					$("#" + balltocheck.$el.id).removeClass('ballselected');
 					$("#" + balltocheck.$el.id).hide();
@@ -885,6 +891,7 @@ var Deck = (function () {
 		balltocheck = null;
 		cardperball = 1;
 		knockeddownpins = 0;
+		playedcards = 0;
 		var cards = _deck4.cards;
 		var len = cards.length;
 		__fontSize = fontSize();
