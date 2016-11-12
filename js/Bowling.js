@@ -96,7 +96,8 @@ function nextball() {
 	if (pileone.length > 0) {
 		$("#" + pileone[pileone.length -1].$el.id).removeClass('ballselected');
 		playedcards = playedcards + 1;
-		console.log("Pileone: " + cardtosymbols(pileone[pileone.length -1]));
+		if (playedcards < 10) $("#cp0" + playedcards).html(cardtosymbols(pileone[pileone.length -1]));
+		else $("#cp" + playedcards).html(cardtosymbols(pileone[pileone.length -1]));
 		$("#" + pileone[pileone.length -1].$el.id).hide();
 		pileone.splice(-1,1);
 		if (pileone.length > 0) pileone[pileone.length -1].setSide('front');
@@ -104,7 +105,8 @@ function nextball() {
 	if (piletwo.length > 0) {
 		$("#" + piletwo[piletwo.length -1].$el.id).removeClass('ballselected');
 		playedcards = playedcards + 1;
-		console.log("Piletwo: " + cardtosymbols(piletwo[piletwo.length -1]));
+		if (playedcards < 10) $("#cp0" + playedcards).html(cardtosymbols(piletwo[piletwo.length -1]));
+		else $("#cp" + playedcards).html(cardtosymbols(piletwo[piletwo.length -1]));
 		$("#" + piletwo[piletwo.length -1].$el.id).hide();
 		piletwo.splice(-1,1);
 		if (piletwo.length > 0) piletwo[piletwo.length -1].setSide('front');
@@ -112,7 +114,8 @@ function nextball() {
 	if (pilethree.length > 0) {
 		$("#" + pilethree[pilethree.length -1].$el.id).removeClass('ballselected');
 		playedcards = playedcards + 1;
-		console.log("Pilethree: " + cardtosymbols(pilethree[pilethree.length -1]));
+		if (playedcards < 10) $("#cp0" + playedcards).html(cardtosymbols(pilethree[pilethree.length -1]));
+		else $("#cp" + playedcards).html(cardtosymbols(pilethree[pilethree.length -1]));
 		$("#" + pilethree[pilethree.length -1].$el.id).hide();
 		pilethree.splice(-1,1);
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
@@ -628,12 +631,14 @@ var Deck = (function () {
 							}
 						}
 						playedcards = playedcards + 1;
-						console.log("Pin to check: " + cardtosymbols(pinstocheck[i]));
+						if (playedcards < 10) $("#cp0" + playedcards).html(cardtosymbols(pinstocheck[i]));
+						else $("#cp" + playedcards).html(cardtosymbols(pinstocheck[i]));
 						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
 						$("#" + pinstocheck[i].$el.id).hide();
 					}
 					playedcards = playedcards + 1;
-					console.log("Ball to check: " + cardtosymbols(balltocheck));
+					if (playedcards < 10) $("#cp0" + playedcards).html(cardtosymbols(balltocheck));
+					else $("#cp" + playedcards).html(cardtosymbols(balltocheck));
 					$("#" + balltocheck.$el.id).removeClass('ballselected');
 					$("#" + balltocheck.$el.id).hide();
 					if (self.x >= minpileone && self.x <= maxpileone) {
