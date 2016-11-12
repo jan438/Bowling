@@ -94,18 +94,21 @@ function cardtosymbols(card) {
 function nextball() {
 	if (pileone.length > 0) {
 		$("#" + pileone[pileone.length -1].$el.id).removeClass('ballselected');
+		console.log("Pileone: " + cardtosymbols(pileone[pileone.length -1]));
 		$("#" + pileone[pileone.length -1].$el.id).hide();
 		pileone.splice(-1,1);
 		if (pileone.length > 0) pileone[pileone.length -1].setSide('front');
 	}
 	if (piletwo.length > 0) {
 		$("#" + piletwo[piletwo.length -1].$el.id).removeClass('ballselected');
+		console.log("Piletwo: " + cardtosymbols(piletwo[piletwo.length -1]));
 		$("#" + piletwo[piletwo.length -1].$el.id).hide();
 		piletwo.splice(-1,1);
 		if (piletwo.length > 0) piletwo[piletwo.length -1].setSide('front');
 	}
 	if (pilethree.length > 0) {
 		$("#" + pilethree[pilethree.length -1].$el.id).removeClass('ballselected');
+		console.log("Pilethree: " + cardtosymbols(pilethree[pilethree.length -1]));
 		$("#" + pilethree[pilethree.length -1].$el.id).hide();
 		pilethree.splice(-1,1);
 		if (pilethree.length > 0) pilethree[pilethree.length -1].setSide('front');
@@ -620,9 +623,11 @@ var Deck = (function () {
 								if (indicespinstocheck.indexOf(neighborcards[j]) === -1 && chainpins.indexOf(neighborcards[j]) === -1) chainpins.push(neighborcards[j]);
 							}
 						}
+						console.log("Pin to check: " + cardtosymbols(pinstocheck[i]));
 						$("#" + pinstocheck[i].$el.id).removeClass('pinselected');
 						$("#" + pinstocheck[i].$el.id).hide();
 					}
+					console.log("Ball to check: " + cardtosymbols(balltocheck));
 					$("#" + balltocheck.$el.id).removeClass('ballselected');
 					$("#" + balltocheck.$el.id).hide();
 					if (self.x >= minpileone && self.x <= maxpileone) {
