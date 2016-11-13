@@ -184,6 +184,15 @@ function nextball() {
 			$("#to" + turnid).html(totalscore);
 		}
 		ball = ball + 1;
+		if (ball >= 20) {
+			swal({
+				title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
+				imageUrl: "Cards.png",
+				timer: 2000,
+				showConfirmButton: false,
+				html: true
+			});
+		}
 		$('#bowling').trigger('click');
 	}
 	previousscore = knockeddownpins;
