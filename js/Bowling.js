@@ -193,6 +193,7 @@ function nextball() {
 				html: true
 			});
 			$("#to11").html(totalscore);
+			setTimeout(function(){location.reload(true);}, 10000);
 		}
 		$('#bowling').trigger('click');
 	}
