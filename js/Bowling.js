@@ -192,6 +192,7 @@ function nextball() {
 				showConfirmButton: false,
 				html: true
 			});
+			$("#to11").html(totalscore);
 		}
 		$('#bowling').trigger('click');
 	}
