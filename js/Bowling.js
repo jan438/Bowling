@@ -62,9 +62,9 @@ function cardtosymbols(card) {
 	var symbol1 = "";
 	var symbol2 = "";
 	switch (card.suit) {
-		case 1: symbol1 = "♥";
+		case 1: symbol1 = "♥".fontcolor("red");
 			break;
-		case 3: symbol1 = "♦";
+		case 3: symbol1 = "♦".fontcolor("red");
 			break;
 	}
 	switch (card.rank) {
