@@ -57,6 +57,7 @@ var strikescored = false;
 var spareturn;
 var striketurn;
 var playedcards = 0;
+const lastball = 20;
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -184,7 +185,7 @@ function nextball() {
 			$("#to" + turnid).html(totalscore);
 		}
 		ball = ball + 1;
-		if (ball >= 20) {
+		if (ball >= lastball) {
 			swal({
 				title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
 				imageUrl: "Cards.png",
