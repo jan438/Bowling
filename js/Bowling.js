@@ -185,7 +185,7 @@ function nextball() {
 			$("#to" + turnid).html(totalscore);
 		}
 		ball = ball + 1;
-		if (ball >= lastball && !strikescored) {
+		if (ball >= lastball && !strikescored && !sparescored) {
 			swal({
 				title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
 				imageUrl: "Cards.png",
