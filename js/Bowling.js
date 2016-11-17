@@ -194,6 +194,9 @@ function nextball() {
 				html: true
 			});
 			$("#to11").html(totalscore);
+			for (var i = 0; i < 52; i++) {
+				$("#card" + i).hide();
+			}
 			setTimeout(function(){location.reload(true);}, 10000);
 		}
 		else $('#bowling').trigger('click');
