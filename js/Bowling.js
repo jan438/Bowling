@@ -196,7 +196,7 @@ function nextball() {
 			$("#to11").html(totalscore);
 			setTimeout(function(){location.reload(true);}, 10000);
 		}
-		$('#bowling').trigger('click');
+		else $('#bowling').trigger('click');
 	}
 	previousscore = knockeddownpins;
 	knockeddownpins = 0;
