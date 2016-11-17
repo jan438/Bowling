@@ -93,6 +93,20 @@ function cardtosymbols(card) {
 	symbols = symbol1 + symbol2;
 	return symbols;
 }
+function gameover() {
+	swal({
+		title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
+		imageUrl: "Cards.png",
+		timer: 2000,
+		showConfirmButton: false,
+		html: true
+	});
+	$("#to11").html(totalscore);
+	for (var i = 0; i < 52; i++) {
+		$("#card" + i).hide();
+	}
+	setTimeout(function(){location.reload(true);}, 10000);
+}
 function nextball() {
 	if (pileone.length > 0) {
 		$("#" + pileone[pileone.length -1].$el.id).removeClass('ballselected');
@@ -139,18 +153,7 @@ function nextball() {
 			$("#to" + turnid).html(totalscore);
 			sparescored = false;
 			if (ball === 21) {
-				swal({
-					title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
-					imageUrl: "Cards.png",
-					timer: 2000,
-					showConfirmButton: false,
-					html: true
-				});
-				$("#to11").html(totalscore);
-				for (var i = 0; i < 52; i++) {
-					$("#card" + i).hide();
-				}
-				setTimeout(function(){location.reload(true);}, 10000);
+				gameover();
 			}
 		}
 		if (strikescored) {
@@ -200,18 +203,7 @@ function nextball() {
 		}
 		ball = ball + 1;
 		if (ball >= lastball && !strikescored && !sparescored) {
-			swal({
-				title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
-				imageUrl: "Cards.png",
-				timer: 2000,
-				showConfirmButton: false,
-				html: true
-			});
-			$("#to11").html(totalscore);
-			for (var i = 0; i < 52; i++) {
-				$("#card" + i).hide();
-			}
-			setTimeout(function(){location.reload(true);}, 10000);
+			gameover();
 		}
 		else $('#bowling').trigger('click');
 	}
