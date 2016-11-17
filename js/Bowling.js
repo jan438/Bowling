@@ -138,6 +138,20 @@ function nextball() {
 			else turnid = "" + spareturn;
 			$("#to" + turnid).html(totalscore);
 			sparescored = false;
+			if (ball === 21) {
+				swal({
+					title: "<h4 id='swalgameover'>Spel afgelopen</h4>",
+					imageUrl: "Cards.png",
+					timer: 2000,
+					showConfirmButton: false,
+					html: true
+				});
+				$("#to11").html(totalscore);
+				for (var i = 0; i < 52; i++) {
+					$("#card" + i).hide();
+				}
+				setTimeout(function(){location.reload(true);}, 10000);
+			}
 		}
 		if (strikescored) {
 			totalscore = totalscore + knockeddownpins;
