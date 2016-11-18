@@ -54,8 +54,10 @@ var gameturn = 1;
 var totalscore = 0;
 var sparescored = false;
 var strikescored = false;
+var doublestrikescored = false;
 var spareturn;
 var striketurn;
+var doublestriketurn;
 var playedcards = 0;
 const lastball = 20;
 function cardtosymbols(card) {
@@ -159,28 +161,62 @@ function nextball() {
 		if (strikescored) {
 			totalscore = totalscore + knockeddownpins;
 		}
+		if (doublestrikescored) {
+			totalscore = totalscore + knockeddownpins;
+		}
 		if (knockeddownpins < 10) ball = ball + 1;
 		else {
 			scoreturn = 10;
 			totalscore = totalscore + scoreturn;
-			strikescored = true;
-			striketurn = gameturn;
-			$("#td" + strid).html("X");
-			ball = ball + 1;
-			if (ball < 10) strid = "0" + ball;
-			else strid = "" + ball;
-			$('#td' + strid).css('background-color','green');
-			$('#td' + strid).css('color','yellow');
-			ball = ball + 1;
-			gameturn = Math.floor(ball / 2) + 1;
-			if (gameturn < 10) turnid = "0" + gameturn;
-			else turnid = "" + gameturn;
-			$('#th' + turnid).css('background-color','blue');
-			$('#th' + turnid).css('color','yellow');
-			$('#bowling').trigger('click');
+			if (strikescored) {
+				doublestrikescored = true;
+				doublestriketurn = gameturn;
+				$("#td" + strid).html("X");
+				ball = ball + 1;
+				if (ball < 10) strid = "0" + ball;
+				else strid = "" + ball;
+				$('#td' + strid).css('background-color','green');
+				$('#td' + strid).css('color','yellow');
+				ball = ball + 1;
+				gameturn = Math.floor(ball / 2) + 1;
+				if (gameturn < 10) turnid = "0" + gameturn;
+				else turnid = "" + gameturn;
+				$('#th' + turnid).css('background-color','blue');
+				$('#th' + turnid).css('color','yellow');
+				$('#bowling').trigger('click');
+			}
+			else {
+				strikescored = true;
+				striketurn = gameturn;
+				$("#td" + strid).html("X");
+				ball = ball + 1;
+				if (ball < 10) strid = "0" + ball;
+				else strid = "" + ball;
+				$('#td' + strid).css('background-color','green');
+				$('#td' + strid).css('color','yellow');
+				ball = ball + 1;
+				gameturn = Math.floor(ball / 2) + 1;
+				if (gameturn < 10) turnid = "0" + gameturn;
+				else turnid = "" + gameturn;
+				$('#th' + turnid).css('background-color','blue');
+				$('#th' + turnid).css('color','yellow');
+				$('#bowling').trigger('click');
+			}
 		}
 	}
 	else {
+		if (doublestrikescored) {
+			totalscore = totalscore + knockeddownpins;
+			if (striketurn < 10) turnid = "0" + striketurn;
+			else turnid = "" + striketurn;
+			$("#to" + turnid).html(totalscore);
+			strikescored = false;
+			if (doublestriketurn < 10) turnid = "0" + doublestriketurn;
+			else turnid = "" + doublestriketurn;
+			$("#to" + turnid).html(totalscore);
+			doublestrikescored = false;
+		}
+		else
 		if (strikescored) {
 			totalscore = totalscore + knockeddownpins;
 			if (striketurn < 10) turnid = "0" + striketurn;
