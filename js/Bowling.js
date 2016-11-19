@@ -158,10 +158,11 @@ function nextball() {
 				gameover();
 			}
 		}
-		if (strikescored) {
+		if (doublestrikescored) {
 			totalscore = totalscore + knockeddownpins;
 		}
-		if (doublestrikescored) {
+		else
+		if (strikescored) {
 			totalscore = totalscore + knockeddownpins;
 		}
 		if (knockeddownpins < 10) ball = ball + 1;
@@ -193,7 +194,7 @@ function nextball() {
 	}
 	else {
 		if (doublestrikescored) {
-			totalscore = totalscore + knockeddownpins;
+			totalscore = totalscore + knockeddownpins + 10;
 			if (striketurn < 10) turnid = "0" + striketurn;
 			else turnid = "" + striketurn;
 			$("#to" + turnid).html(totalscore);
