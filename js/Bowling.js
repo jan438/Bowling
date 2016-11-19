@@ -107,7 +107,7 @@ function gameover() {
 	for (var i = 0; i < 52; i++) {
 		$("#card" + i).hide();
 	}
-	setTimeout(function(){location.reload(true);}, 10000);
+	setTimeout(function(){location.reload(true);}, 30000);
 }
 function nextball() {
 	if (pileone.length > 0) {
