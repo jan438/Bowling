@@ -319,11 +319,9 @@ function validate(pincards, ballcard) {
 	var sum = 0;
 	var valid = false;
 	for (var i = 0; i < pincards.length; i++) {
-		console.log("Validate pins " + pincards[i].rank);
 		if (pincards[i].rank !== 10) sum = sum + pincards[i].rank;
 	}
 	if (ballcard != null) {
-		console.log("Validate ball " + ballcard.rank);
 		if (sum > 9) sum = sum % 10;
 		valid = (sum === (ballcard.rank % 10));
 	}
@@ -551,7 +549,6 @@ var Deck = (function () {
 			if ($("#card" + i).hasClass('ballselected')) countballselected = countballselected + 1;
 		}
 		if (self.x >= minpileone && self.x <= maxpileone) {
-			console.log("1: " + cardtosymbols(self));
 			if ($("#" + pileone[pileone.length - 1].$el.id).hasClass('ballselected')) $("#" + pileone[pileone.length - 1].$el.id).removeClass('ballselected');
 			else if (countballselected === 0) {
 				$("#" + pileone[pileone.length - 1].$el.id).addClass('ballselected');
@@ -559,7 +556,6 @@ var Deck = (function () {
 			}
 		}
 		if (self.x >= minpiletwo && self.x <= maxpiletwo) {
-			console.log("2: " + cardtosymbols(self));
 			if ($("#" + piletwo[piletwo.length - 1].$el.id).hasClass('ballselected')) $("#" + piletwo[piletwo.length - 1].$el.id).removeClass('ballselected');
 			else if (countballselected === 0) {
 				$("#" + piletwo[piletwo.length - 1].$el.id).addClass('ballselected');
@@ -567,7 +563,6 @@ var Deck = (function () {
 			}
 		}
 		if (self.x >= minpilethree && self.x <= maxpilethree) {
-			console.log("3: " + cardtosymbols(self));
 			if ($("#" + pilethree[pilethree.length - 1].$el.id).hasClass('ballselected')) $("#" + pilethree[pilethree.length - 1].$el.id).removeClass('ballselected');
 			else if (countballselected === 0) {
 				$("#" + pilethree[pilethree.length - 1].$el.id).addClass('ballselected');
@@ -576,7 +571,6 @@ var Deck = (function () {
 		}
 		for (var i = 0; i < countpincards; i++) {
 			if (self.x === pinposition[i][0] && self.y === pinposition[i][1]) {
-				console.log("Pin: " + i + " selected with neighbors " + neighbors[i]);
 				if ($("#" + $el.id).hasClass('pinselected')) {
 					$("#" + $el.id).removeClass('pinselected');
 					var index = pinstocheck.indexOf(self);
