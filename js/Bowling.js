@@ -1,4 +1,13 @@
 'use strict';
+$.urlParam = function(name) {
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	if (results == null) {
+		return null;
+	}
+	else {
+		return results[1] || 0;
+	}
+}
 var Bowling = {};
 const countpincards = 10;
 const pilecards = 3;
@@ -813,7 +822,9 @@ var Deck = (function () {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
 			_deck2.cards.forEach(function (card, i) {
-				console.log(i + ":" + cardtosymbols(card));
+				if (($.urlParam('stubmode') != null) && $.urlParam('stubmode')) {
+					console.log(i + ":" + cardtosymbols(card));
+				}
 				if (i === 19) {
 					next();
 				}
