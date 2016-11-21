@@ -20,7 +20,7 @@ $Bowling.addEventListener('click', function () {
 	});
 	deck.shuffle();
 	deck.shuffle();
-	deck.sort();
+	if (($.urlParam('stubmode') != null) && $.urlParam('stubmode')) deck.sort();
 	deck.Bowling();
 });
 deck.mount($container);

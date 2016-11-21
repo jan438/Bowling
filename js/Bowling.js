@@ -821,14 +821,12 @@ var Deck = (function () {
 	deck: function deck(_deck2) {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
-			if (($.urlParam('stubmode') != null) && $.urlParam('stubmode')) {
-				for (var i = 0; i < 19; i++) {
-					for (var j = i + 1; j < 20; j++) {
-						if (_deck2.cards[i].suit < _deck2.cards[j].suit || _deck2.cards[i].suit === _deck2.cards[j].suit && _deck2.cards[i].rank < _deck2.cards[j].rank) {
-							var tempcard = _deck2.cards[i];
-							_deck2.cards[i] = _deck2.cards[j];
-							_deck2.cards[j] = tempcard;
-						}
+			for (var i = 0; i < 19; i++) {
+				for (var j = i + 1; j < 20; j++) {
+					if (_deck2.cards[i].suit < _deck2.cards[j].suit || _deck2.cards[i].suit === _deck2.cards[j].suit && _deck2.cards[i].rank < _deck2.cards[j].rank) {
+						var tempcard = _deck2.cards[i];
+						_deck2.cards[i] = _deck2.cards[j];
+						_deck2.cards[j] = tempcard;
 					}
 				}
 			}
