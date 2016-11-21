@@ -10,17 +10,18 @@ $Bowling.textContent = 'Bowling';
 $topbar.appendChild($Bowling);
 var deck = Deck();
 $Bowling.addEventListener('click', function () {
-  deck.queue(function (next) {
-    deck.cards.forEach(function (card, i) {
-      setTimeout(function () {
-        card.setSide('back')
-      }, i * 7.5)
-    })
-    next()
-  })
-  deck.shuffle()
-  deck.shuffle()
-  deck.Bowling()
+	deck.queue(function (next) {
+		deck.cards.forEach(function (card, i) {
+			setTimeout(function () {
+				card.setSide('back');
+			}, i * 7.5);
+		});
+		next();
+	});
+	deck.shuffle();
+	deck.shuffle();
+	deck.sort();
+	deck.Bowling();
 });
 deck.mount($container);
 deck.intro();
