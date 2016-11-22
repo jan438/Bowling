@@ -25,4 +25,3 @@ $Bowling.addEventListener('click', function () {
 });
 deck.mount($container);
 deck.intro();
-deck.sort();
