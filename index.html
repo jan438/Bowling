@@ -13,6 +13,7 @@
   </head>
   <body>
 	<div id="container">
+		<button id="Bowling" class="button"></button>
 		<table id="bowlingscoring" class="table table-bordered">
 			<tr><th id="th01" class="turn" colspan="2">1</th><th id="th02" class="turn" colspan="2">2</th><th id="th03" class="turn" colspan="2">3</th><th id="th04" class="turn" colspan="2">4</th><th id="th05" class="turn" colspan="2">5</th><th id="th06" class="turn" colspan="2">6</th><th id="th07" class="turn" colspan="2">7</th><th id="th08" class="turn" colspan="2">8</th><th id="th09" class="turn" colspan="2">9</th><th id="th10" class="turn" colspan="2">10</th><th id="th11" class="turn" colspan="2">Total</th></tr>
 			<tr><td id="td01">0</td><td id="td02">0</td><td id="td03">0</td><td id="td04">0</td><td id="td05">0</td><td id="td06">0</td><td id="td07">0</td><td id="td08">0</td><td id="td09">0</td><td id="td10">0</td><td id="td11">0</td><td id="td12">0</td><td id="td13">0</td><td id="td14">0</td><td id="td15">0</td><td id="td16">0</td><td id="td17">0</td><td id="td18">0</td><td id="td19">0</td><td id="td20">0</td><td id="td21">0</td><td id="td22">0</td></tr>
@@ -70,7 +71,21 @@
 			$('#cp19').html(s);
 			s = "♦".fontcolor("red") + "0";
 			$('#cp20').html(s);
-			$('#bowling').trigger('click');
+			$('#Bowling').bind('click', function() {
+				deck.queue(function (next) {
+					deck.cards.forEach(function (card, i) {
+					setTimeout(function () {
+							card.setSide('back')
+						}, i * 7.5)
+					});
+					next();
+				});
+				deck.shuffle();
+				deck.shuffle();
+				if (($.urlParam('stubmode') != null) && $.urlParam('stubmode')) deck.sort();
+				deck.Bowling();
+			});
+			$('#Bowling').trigger('click');
 		});
 	</script>
   </body>

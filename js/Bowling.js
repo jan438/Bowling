@@ -198,7 +198,7 @@ function nextball() {
 			else turnid = "" + gameturn;
 			$('#th' + turnid).css('background-color','blue');
 			$('#th' + turnid).css('color','yellow');
-			$('#bowling').trigger('click');
+			$('#Bowling').trigger('click');
 		}
 	}
 	else {
@@ -238,7 +238,7 @@ function nextball() {
 		if (ball >= lastball && !strikescored && !sparescored) {
 			gameover();
 		}
-		else $('#bowling').trigger('click');
+		else $('#Bowling').trigger('click');
 	}
 	previousscore = knockeddownpins;
 	knockeddownpins = 0;
