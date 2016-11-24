@@ -594,15 +594,11 @@ var Deck = (function () {
 							}
 						}
 						else {
-							if (cardperball === 2) {
+							if (cardperball >= 2) {
 								if (chainpins.indexOf(i) >= 0) {
 									$("#" + $el.id).addClass('pinselected');
 									pinstocheck.push(self);
 								}
-							}
-							else {
-								$("#" + $el.id).addClass('pinselected');
-								pinstocheck.push(self);
 							}
 						}
 					}
@@ -666,7 +662,6 @@ var Deck = (function () {
 			if (longpress) {
 				var valid = validate(pinstocheck, balltocheck);
 				if (valid) {
-					chainpins = [];
 					var indicespinstocheck = [];
 					for (var i = 0; i < pinstocheck.length; i++) {
 						indicespinstocheck.push(pincard.indexOf(pinstocheck[i]));
@@ -912,6 +907,7 @@ var Deck = (function () {
 		piletwo = [];
 		pilethree = [];
 		pinstocheck = [];
+		chainpins = [];
 		pincard = new Array(countpincards);
 		balltocheck = null;
 		cardperball = 1;
